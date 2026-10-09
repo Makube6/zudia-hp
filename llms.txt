@@ -1,0 +1,23 @@
+# 株式会社ZUDIA
+
+> 株式会社ZUDIA（ズーディア）は、AI導入支援・AI検索対策（AIO/LLMO）・サイト改善・Web/アプリ開発・新規事業伴走で、事業を前へ進める会社です。東京都渋谷区。代表取締役 植田昌基。2026年9月設立。コンセプトは「もっと、あなたへ。（TOWARD YOU）」。
+
+現場に入り、話を聞き、課題を整理し、小さく作って実務で試し、使えるところまで一緒に進めることを基本にしています。AIは手段であり、目的は顧客の仕事を楽にし事業を前に進めることです。
+
+## サービス
+- [AI検索対策（AIO・LLMO診断）](https://zudia.jp/#aio): ChatGPT・Google AI Overviews・Gemini・Perplexity・Claude の5エンジンに30問ずつ質問し、企業名の言及と公式サイトの引用を実測。技術診断、改善ロードマップ、構造化データ・llms.txt の実装、施策後の再計測まで行う。
+- [サイト改善・Web制作](https://zudia.jp/#site): 公式サイトとGoogleビジネスプロフィール・予約媒体の情報統一、FAQ・構造化データ・導線の改善、リニューアル、EC改善。
+- [AI導入支援](https://zudia.jp/#service): 業務ヒアリング、生成AI導入、業務ツール作成、自動化、社内定着。
+- [Web・アプリ開発](https://zudia.jp/#service): Webサービス、LINE、業務システム、マッチングサービスの企画・開発・運営。
+- [新規事業伴走](https://zudia.jp/#service): 企画、営業、PoC、マーケティング、立ち上げ。
+
+## プロダクト
+- [PostonAI](https://zudia.jp/products.html#postonai): SNS運用をAIで自動化するWebシステム。note・X・Instagram・Facebook・Threads への予約投稿、複数の生成AIによる文章生成、テンプレート、画像・動画ライブラリ。
+- [ウマぃ飯](https://umaimeshi.com/): 競馬場のグルメを入口にしたグルメサイト。JRA公式を一次情報に実在店舗を紹介。
+
+## 実績
+- [実績一覧](https://zudia.jp/products.html#works): 大衆居酒屋の集客立て直しとAI検索対策、工業系企業のAI業務改善伴走、不動産・民泊運営会社の物件精査システム、動物病院の公式LINE AIチャットボット ほか。
+
+## 連絡先
+- メール: info@zudia.jp
+- 会社概要: https://zudia.jp/#company

@@ -4,32 +4,64 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>株式会社ZUDIA｜もっと、あなたへ。</title>
-<meta name="description" content="株式会社ZUDIAは、AI導入支援・Web/アプリ開発・新規事業伴走で、事業を前へ進める会社です。現場に入り、考え、つくり、動かし、結果まで一緒に追います。">
+<meta name="description" content="株式会社ZUDIAは、AI導入支援・AI検索対策（AIO/LLMO）・サイト改善・Web/アプリ開発・新規事業伴走で、事業を前へ進める会社です。自社プロダクトにSNS運用自動化の PostonAI。">
 <!--
   差し替え箇所（公開前に必ず確認。本文中は「要確認」チップで示している）
   - 代表者の肩書・所在地・設立・資本金は定款（2026-09-19 作成）から転記済み。設立は登記完了日に合わせて要確認
-  - 連絡先メール info@zudia.jp はメール環境の開設後に有効になる（#company, #contact の mailto）
-  - 実績の掲載可否（#works。ポートフォリオ 2026-08 版から転記）
-  - 公開URL: https://zudia.jp/（お名前.com で取得済み 2026-09-15）。og:image / canonical は絶対URLにしてある
+  - 実績の掲載可否（#works と products.html#works。ポートフォリオ 2026-08 版＋ZUDIA名義の案件から転記）
+  - AIO の案件は TIAM 名義のものが多い。ZUDIA の実績として載せるのは ZUDIA 名義と確認できたものだけ
+  - 公開URL: https://zudia.jp/。og:image / canonical は絶対URL
+  - 色・書体は css/style.css 先頭の tokens ブロックのみ。動きは js/main.js（本文は必ず HTML に書く）
 -->
 <meta property="og:title" content="株式会社ZUDIA｜もっと、あなたへ。">
-<meta property="og:description" content="AI導入支援・Web/アプリ開発・新規事業伴走。事業を前へ進める会社。">
+<meta property="og:description" content="AI導入支援・AI検索対策・サイト改善・Web/アプリ開発・新規事業伴走。事業を前へ進める会社。">
 <meta property="og:url" content="https://zudia.jp/">
 <meta property="og:image" content="https://zudia.jp/assets/zudia-primary.png">
-<link rel="canonical" href="https://zudia.jp/">
 <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://zudia.jp/">
 <link rel="icon" type="image/png" href="assets/zudia-symbol.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Nunito+Sans:wght@600;700&display=swap">
 <link rel="stylesheet" href="css/style.css">
+<script src="js/main.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://zudia.jp/#org",
+      "name": "株式会社ZUDIA",
+      "alternateName": ["ZUDIA", "ズーディア"],
+      "url": "https://zudia.jp/",
+      "logo": "https://zudia.jp/assets/zudia-primary.png",
+      "slogan": "もっと、あなたへ。",
+      "email": "info@zudia.jp",
+      "foundingDate": "2026-09",
+      "founder": { "@type": "Person", "name": "植田 昌基", "jobTitle": "代表取締役" },
+      "address": { "@type": "PostalAddress", "addressCountry": "JP", "addressRegion": "東京都", "addressLocality": "渋谷区", "streetAddress": "桜丘町26番1号 セルリアンタワー15階" },
+      "knowsAbout": ["生成AI導入支援", "業務自動化", "AI検索対策", "AIO", "LLMO", "Webサイト改善", "Webアプリ開発", "LINE公式アカウント", "新規事業開発"],
+      "makesOffer": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI導入支援" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI検索対策（AIO/LLMO診断）" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "サイト改善・Web制作" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web・アプリ開発" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "新規事業伴走" } }
+      ]
+    },
+    { "@type": "WebSite", "@id": "https://zudia.jp/#site", "url": "https://zudia.jp/", "name": "株式会社ZUDIA", "inLanguage": "ja", "publisher": { "@id": "https://zudia.jp/#org" } }
+  ]
+}
+</script>
 </head>
 <body>
 
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="ZUDIA トップへ">
-      <img src="assets/zudia-symbol.png" alt="" width="40" height="31">
+    <a class="brand" href="./" aria-label="ZUDIA トップへ">
+      <img src="assets/zudia-symbol.png" alt="" width="38" height="29">
       <span>
         <span class="brand-name">ZUDIA</span><br>
         <span class="brand-tag">TOWARD YOU</span>
@@ -38,8 +70,8 @@
     <nav class="nav" aria-label="サイト内">
       <a href="#about">私たちについて</a>
       <a href="#service">サービス</a>
+      <a href="products.html">プロダクト・実績</a>
       <a href="#approach">進め方</a>
-      <a href="#works">実績</a>
       <a href="#company">会社概要</a>
       <a class="btn btn-primary" href="#contact">相談する</a>
     </nav>
@@ -48,8 +80,8 @@
       <div class="menu-list">
         <a href="#about">私たちについて</a>
         <a href="#service">サービス</a>
+        <a href="products.html">プロダクト・実績</a>
         <a href="#approach">進め方</a>
-        <a href="#works">実績</a>
         <a href="#company">会社概要</a>
         <a href="#contact">相談する</a>
       </div>
@@ -64,28 +96,38 @@
     <div class="wrap">
       <div>
         <p class="eyebrow">Toward You</p>
-        <h1>もっと、あなたへ。</h1>
-        <p class="hero-sub lead">株式会社ZUDIAは、距離を取って助言する会社ではありません。現場に入り、考え、つくり、動かし、結果まで一緒に追いかけます。</p>
-        <div class="hero-actions">
+        <h1><span class="line" style="--d:.05s">もっと、</span><span class="line" style="--d:.2s"><span class="grad-text">あなた</span>へ。</span></h1>
+        <p class="hero-sub lead reveal" style="--d:.35s">株式会社ZUDIAは、距離を取って助言する会社ではありません。現場に入り、考え、つくり、動かし、結果まで一緒に追いかけます。</p>
+        <div class="hero-actions reveal" style="--d:.45s">
           <a class="btn btn-primary" href="#contact">相談してみる <span class="arrow">→</span></a>
           <a class="btn btn-ghost" href="#service">サービスを見る</a>
         </div>
-        <p class="hero-en">AI・Web・System・New Business</p>
+        <p class="hero-en reveal" style="--d:.55s">AI・AIO・Web・System・New Business</p>
       </div>
-      <div class="hero-visual">
-        <img src="assets/zudia-symbol.png" alt="ZUDIAのシンボル。前へ伸びる一本の道を表したZ" width="412" height="319">
+      <div class="hero-visual" aria-hidden="true">
+        <span class="glow"></span>
+        <span class="orbit"></span>
+        <img src="assets/zudia-symbol.png" alt="" width="412" height="319">
       </div>
     </div>
   </section>
+
+  <!-- キーワードの帯。同じリストを2回並べて継ぎ目なく流す（2回目は読み上げない） -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <ul><li>AI Adoption</li><li>AI Search Optimization</li><li>Website Growth</li><li>Web &amp; App</li><li>New Business</li><li>Toward You</li></ul>
+      <ul><li>AI Adoption</li><li>AI Search Optimization</li><li>Website Growth</li><li>Web &amp; App</li><li>New Business</li><li>Toward You</li></ul>
+    </div>
+  </div>
 
   <!-- 私たちについて -->
   <section class="section" id="about">
     <div class="wrap">
       <div class="about-grid">
-        <div>
+        <div class="reveal">
           <p class="eyebrow">About</p>
           <div class="section-head">
-            <h2 class="h2">AIの会社ではなく、事業を前へ進める会社です。</h2>
+            <h2 class="h2">AIの会社ではなく、<br>事業を前へ進める会社です。</h2>
           </div>
           <div class="about-body">
             <p>ZUDIA（ズーディア）という名前は、ドイツ語の "zu dir"、「あなたへ」から来ています。私たちの仕事は、人の想いやアイデアや可能性を、実際の事業やプロダクトとして相手に届けることです。</p>
@@ -97,7 +139,7 @@
             </ul>
           </div>
         </div>
-        <div>
+        <div class="reveal" style="--d:.15s">
           <ul class="philosophy" aria-label="ZUDIAの考え">
             <li>アイデアを、事業へ。</li>
             <li>技術を、人へ。</li>
@@ -110,15 +152,45 @@
   </section>
 
   <!-- サービス：何をするか／なぜ必要か を対で書く -->
-  <section class="section" id="service">
+  <section class="section tint" id="service">
     <div class="wrap">
-      <p class="eyebrow">Service</p>
-      <div class="section-head">
-        <h2 class="h2">事業を前へ進める、3つの支援。</h2>
+      <div class="section-head reveal">
+        <p class="eyebrow">Service</p>
+        <h2 class="h2">事業を前へ進める、5つの支援。</h2>
         <p>事業領域は限定しません。どの支援も、現場の話を聞くところから始めて、使えるところまで一緒に進めます。</p>
       </div>
-      <div class="services">
-        <article class="service">
+      <div class="services" data-stagger>
+        <article class="service reveal is-wide is-feature on-navy" id="aio">
+          <div class="service-top"><span class="no"></span><span class="new">NEW</span></div>
+          <p class="en">AI Search Optimization</p>
+          <h3 class="h3">AI検索対策（AIO・LLMO診断）</h3>
+          <dl>
+            <dt>何をするか</dt>
+            <dd>ChatGPT・Google AI Overviews・Gemini・Perplexity・Claude の5つの生成AIに、お客様が実際にしそうな質問を投げ、御社が名前を挙げられるか、公式サイトが引用されるかを実測します。サイトの技術診断と合わせて、改善の優先順位を決め、実装と再計測まで行います。</dd>
+            <dt>なぜ必要か</dt>
+            <dd>調べものの入口が、検索結果からAIの回答に移りつつあります。AIの回答に名前が出なければ、比較の候補にすら入れません。推測ではなく、実測で現状を知ることから始めます。</dd>
+          </dl>
+          <ul class="tags" aria-label="成果物">
+            <li>5エンジン×30問の実測</li><li>技術診断</li><li>改善ロードマップ</li><li>構造化データ・llms.txt</li><li>施策後の再計測</li>
+          </ul>
+          <p class="feature-note">重視するのは「名前が出たか」より「公式サイトが引用されたか」。良い点も、そのまま報告します。</p>
+        </article>
+        <article class="service reveal is-wide" id="site">
+          <div class="service-top"><span class="no"></span><span class="new">NEW</span></div>
+          <p class="en">Website Growth</p>
+          <h3 class="h3">サイト改善・Web制作</h3>
+          <dl>
+            <dt>何をするか</dt>
+            <dd>公式サイトと、Googleビジネスプロフィールや予約・ポータル媒体の情報を揃え、FAQ・構造化データ・導線を直します。必要ならリニューアルや新規制作、EC の改善まで手がけます。</dd>
+            <dt>なぜ必要か</dt>
+            <dd>営業時間や料金が媒体ごとに食い違うと、人もAIも迷います。作り直す前に、売上・予約・アクセスの数字から、直すべき場所を決めます。</dd>
+          </dl>
+          <ul class="tags" aria-label="対応領域">
+            <li>現状分析</li><li>情報の統一</li><li>FAQ・構造化データ</li><li>リニューアル</li><li>EC改善</li>
+          </ul>
+        </article>
+        <article class="service reveal">
+          <div class="service-top"><span class="no"></span></div>
           <p class="en">AI Adoption</p>
           <h3 class="h3">AI導入支援</h3>
           <dl>
@@ -131,7 +203,8 @@
             <li>文章・情報整理</li><li>業務ツール開発</li><li>外部サービス連携</li><li>画像・音声・動画</li>
           </ul>
         </article>
-        <article class="service">
+        <article class="service reveal">
+          <div class="service-top"><span class="no"></span></div>
           <p class="en">Web &amp; App</p>
           <h3 class="h3">Web・アプリ開発</h3>
           <dl>
@@ -144,7 +217,8 @@
             <li>Webサービス</li><li>LINE</li><li>業務システム</li><li>プロダクト</li>
           </ul>
         </article>
-        <article class="service">
+        <article class="service reveal">
+          <div class="service-top"><span class="no"></span></div>
           <p class="en">New Business</p>
           <h3 class="h3">新規事業伴走</h3>
           <dl>
@@ -161,15 +235,44 @@
     </div>
   </section>
 
+  <!-- プロダクト（詳細は products.html） -->
+  <section class="section" id="products">
+    <div class="wrap">
+      <div class="section-head section-head-row reveal">
+        <div>
+          <p class="eyebrow">Products</p>
+          <h2 class="h2">自分たちでも、つくって動かしています。</h2>
+        </div>
+        <a class="link-arrow" href="products.html">プロダクトと実績をすべて見る <span class="arrow">→</span></a>
+      </div>
+      <div class="products" data-stagger>
+        <article class="product reveal">
+          <div class="product-head"><h3 class="product-name">PostonAI</h3><span class="status is-live">稼働中</span></div>
+          <p class="product-cat">SNS運用の自動化</p>
+          <p class="product-lead">ネタ集めから投稿まで、SNS運用をAIでまとめて回す。</p>
+          <p>note・X・Instagram・Facebook・Threads への予約投稿と、複数のAIによる文章生成をひとつの管理画面で。クライアントのアカウント運用で稼働しています。</p>
+          <div class="product-actions"><a class="btn btn-ghost" href="products.html#postonai">詳しく見る <span class="arrow">→</span></a></div>
+        </article>
+        <article class="product reveal">
+          <div class="product-head"><h3 class="product-name">ウマぃ飯</h3><span class="status is-live">公開中</span></div>
+          <p class="product-cat">グルメメディア</p>
+          <p class="product-lead">競馬場の、うまい飯。</p>
+          <p>競馬場のグルメを入口に、レースに詳しくない人でも競馬場を楽しめるようにしたグルメサイト。JRA公式を一次情報に、実在する店舗とメニューを紹介しています。</p>
+          <div class="product-actions"><a class="btn btn-ghost" href="products.html#umaimeshi">詳しく見る <span class="arrow">→</span></a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- 進め方：実際の順序なので番号を使う -->
   <section class="section on-navy" id="approach">
     <div class="wrap">
-      <p class="eyebrow">Approach</p>
-      <div class="section-head">
+      <div class="section-head reveal">
+        <p class="eyebrow">Approach</p>
         <h2 class="h2">作って終わりではなく、使えるところまで。</h2>
         <p>いきなり大きなシステムは作りません。聞いて、整理して、小さく作って、現場で試す。この順番を守ります。</p>
       </div>
-      <ol class="steps">
+      <ol class="steps" data-stagger>
         <li class="step">
           <h3 class="h3">聞く</h3>
           <p>現場の話を聞き、業務が実際にどう動いているかを確認します。</p>
@@ -191,55 +294,39 @@
           <p>支援側が作り続けるのではなく、社内の担当者が自分で改善を続けられる状態を目指します。</p>
         </li>
       </ol>
-      <p class="steps-note">経営者の話を、現場で使える形に変える。現場の困りごとを、開発側に伝わる形に変える。ZUDIAは、経営と現場と開発のあいだに立つ役割を引き受けます。</p>
+      <p class="steps-note reveal">経営者の話を、現場で使える形に変える。現場の困りごとを、開発側に伝わる形に変える。ZUDIAは、経営と現場と開発のあいだに立つ役割を引き受けます。</p>
     </div>
   </section>
 
-  <!-- 実績 -->
+  <!-- 実績（抜粋。全件は products.html#works） -->
   <section class="section" id="works">
     <div class="wrap">
-      <p class="eyebrow">Works</p>
-      <div class="section-head">
-        <h2 class="h2">主な取り組み。</h2>
-        <p>すべて、実際の業務を題材に、担当者と一緒に作ったものです。<span class="chip">要確認：掲載可否・表記</span></p>
+      <div class="section-head section-head-row reveal">
+        <div>
+          <p class="eyebrow">Works</p>
+          <h2 class="h2">主な取り組み。</h2>
+          <p>実際の業務を題材に、担当者と一緒に作ったものです。<span class="chip">要確認：掲載可否・表記</span></p>
+        </div>
+        <a class="link-arrow" href="products.html#works">実績をすべて見る <span class="arrow">→</span></a>
       </div>
-      <div class="works">
-        <article class="work">
-          <span class="chip chip-area">SNS運用</span>
-          <h3 class="h3">SNS自動化サービス「PostonAI」</h3>
-          <div>
-            <p>情報収集、テーマ選定、文章作成、画像準備、投稿準備までの流れをAIで効率化。</p>
-            <p class="result">SNS運用にかかる作業時間を短縮</p>
-          </div>
+      <div class="works" data-stagger>
+        <article class="work reveal">
+          <div class="work-meta"><span class="chip chip-area">AI検索対策・サイト改善</span></div>
+          <h3 class="h3">大衆居酒屋の集客立て直しとAI検索対策</h3>
+          <p>売上・予約・口コミの数字を分析し、公式サイトとグルメ媒体・Googleビジネスプロフィールの情報を統一。5つの生成AIで150件を実測し、FAQと構造化データを整備しました。</p>
+          <p class="result">公式サイトのリニューアルを進行中</p>
         </article>
-        <article class="work">
-          <span class="chip chip-area">LINE・AI</span>
+        <article class="work reveal">
+          <div class="work-meta"><span class="chip chip-area">LINE・AI</span></div>
           <h3 class="h3">動物病院の公式LINE AIチャットボット</h3>
-          <div>
-            <p>問い合わせ対応、予約案内、緊急時対応、スタッフへの引き継ぎまでの会話を設計。新着情報をAIで要約し、チャットボットへ反映する仕組みも構築。</p>
-            <p class="result">人の対応が必要な件数を削減</p>
-          </div>
+          <p>問い合わせ対応、予約案内、緊急時対応、スタッフへの引き継ぎまでの会話を設計。新着情報をAIで要約し、チャットボットへ反映する仕組みも構築しました。</p>
+          <p class="result">人の対応が必要な件数を削減</p>
         </article>
-        <article class="work">
-          <span class="chip chip-area">業務自動化</span>
-          <h3 class="h3">飲食店の予約管理</h3>
-          <div>
-            <p>複数の予約媒体から届くメールをAIで読み取り、予約日時・人数・氏名・コースを統一形式で管理できるようにした。</p>
-          </div>
-        </article>
-        <article class="work">
-          <span class="chip chip-area">動画・アバター</span>
-          <h3 class="h3">FP会社のAIアバター動画</h3>
-          <div>
-            <p>音声生成とAIアバターを組み合わせ、本人が毎回撮影しなくても動画を制作できる運用を構築。</p>
-          </div>
-        </article>
-        <article class="work">
-          <span class="chip chip-area">伴走支援</span>
-          <h3 class="h3">AI業務改善ワークショップ</h3>
-          <div>
-            <p>不動産・民泊運営会社に対して、実際の業務を題材に、担当者と一緒に簡易ツールを作る伴走支援を実施。</p>
-          </div>
+        <article class="work reveal">
+          <div class="work-meta"><span class="chip chip-area">業務自動化</span></div>
+          <h3 class="h3">不動産・民泊運営会社の物件精査システム</h3>
+          <p>物件資料のPDFからAIで21項目を抜き出し、精査の手間を減らす仕組みを構築。担当者と一緒に簡易ツールを作るワークショップも行いました。</p>
+          <p class="result">実際の資料で全項目を正しく抽出</p>
         </article>
       </div>
     </div>
@@ -249,11 +336,11 @@
   <section class="section tint" id="message">
     <div class="wrap">
       <div class="message">
-        <div>
+        <div class="reveal">
           <p class="eyebrow">Message</p>
           <p class="message-quote">現場の話を聞く。課題を整理する。実際に使える形にする。この3つを、すべての仕事の基本にしています。</p>
         </div>
-        <div class="message-body">
+        <div class="message-body reveal" style="--d:.15s">
           <p>現場、営業、システム。異なる仕事を経験してきました。空調設備工事の現場監督として工程と人を動かし、不動産営業として相手の状況を聞いて意思決定を支え、システム開発会社でWebサービスやLINE、業務システムの企画・開発・運営に携わってきました。</p>
           <p>その中で身についたのは、経営者や現場の話を聞き、課題を整理し、AIやシステムで改善方法を考え、開発側に伝え、実際に使えるところまで進める、という一連の動き方です。「何を作るか」より先に、「何を解決するか」を考えます。</p>
           <p>AIを使うことが目的ではありません。あなたの仕事が楽になり、事業が前へ進むこと。それだけを見て、一緒に動きます。</p>
@@ -275,11 +362,11 @@
   <!-- 会社概要 -->
   <section class="section" id="company">
     <div class="wrap">
-      <p class="eyebrow">Company</p>
-      <div class="section-head">
+      <div class="section-head reveal">
+        <p class="eyebrow">Company</p>
         <h2 class="h2">会社概要</h2>
       </div>
-      <div class="company">
+      <div class="company reveal">
         <dl>
           <dt>社名</dt>
           <dd>株式会社ZUDIA（ズーディア）</dd>
@@ -292,9 +379,9 @@
           <dt>資本金</dt>
           <dd>300万円</dd>
           <dt>事業内容</dt>
-          <dd>AI導入支援（業務効率化・生成AI導入・自動化）／Web・アプリ開発（Webサービス・LINE・システム・プロダクト）／新規事業伴走（企画・営業・PoC・マーケティング・立ち上げ）</dd>
+          <dd>AI導入支援（業務効率化・生成AI導入・自動化）／AI検索対策（AIO・LLMO診断と実装）／サイト改善・Web制作／Web・アプリ開発（Webサービス・LINE・システム・プロダクト）／新規事業伴走（企画・営業・PoC・マーケティング・立ち上げ）／自社プロダクトの開発・運営（PostonAI ほか）</dd>
           <dt>連絡先</dt>
-          <dd>info@zudia.jp</dd>
+          <dd><a href="mailto:info@zudia.jp">info@zudia.jp</a></dd>
         </dl>
       </div>
     </div>
@@ -303,15 +390,16 @@
   <!-- お問い合わせ -->
   <section class="section on-navy contact" id="contact">
     <div class="wrap">
-      <div>
+      <div class="reveal">
         <p class="eyebrow">Contact</p>
         <div class="section-head">
-          <h2 class="h2">まずは、話を聞かせてください。</h2>
-          <p>業務の困りごと、新しい事業のアイデア、まだ形になっていない相談でも構いません。話を聞くところから、一緒に始めます。</p>
+          <h2 class="h2">まずは、話を<br>聞かせてください。</h2>
+          <p>業務の困りごと、AIに自社が出てこない理由、新しい事業のアイデア。まだ形になっていない相談でも構いません。話を聞くところから、一緒に始めます。</p>
         </div>
       </div>
-      <div class="contact-actions">
+      <div class="contact-actions reveal" style="--d:.15s">
         <a class="btn btn-primary" href="mailto:info@zudia.jp?subject=ZUDIAへの相談">メールで相談する <span class="arrow">→</span></a>
+        <a class="btn btn-ghost" href="mailto:info@zudia.jp?subject=AI検索対策（AIO診断）の相談">AI検索対策について聞く</a>
         <p class="note">info@zudia.jp</p>
       </div>
     </div>
@@ -322,8 +410,8 @@
 <footer class="site-footer on-navy section">
   <div class="wrap">
     <div class="footer-top">
-      <a class="brand" href="#top" aria-label="ZUDIA トップへ">
-        <img src="assets/zudia-symbol.png" alt="" width="40" height="31">
+      <a class="brand" href="./" aria-label="ZUDIA トップへ">
+        <img src="assets/zudia-symbol.png" alt="" width="38" height="29">
         <span>
           <span class="brand-name">ZUDIA</span><br>
           <span class="brand-tag">TOWARD YOU</span>
@@ -334,14 +422,14 @@
     <nav class="footer-nav" aria-label="フッター">
       <a href="#about">私たちについて</a>
       <a href="#service">サービス</a>
+      <a href="products.html">プロダクト・実績</a>
       <a href="#approach">進め方</a>
-      <a href="#works">実績</a>
       <a href="#message">代表メッセージ</a>
       <a href="#company">会社概要</a>
       <a href="#contact">お問い合わせ</a>
     </nav>
     <div class="footer-bottom">
-      <span class="en">© 2026 ZUDIA Inc.</span>
+      <span class="en">© <span data-year>2026</span> ZUDIA Inc.</span>
       <span>もっと、あなたへ。</span>
     </div>
   </div>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>プロダクト・実績｜株式会社ZUDIA</title>
+<meta name="description" content="株式会社ZUDIAの自社プロダクト（SNS運用自動化の PostonAI、グルメメディアのウマぃ飯）と、AI導入・AI検索対策・サイト改善・LINE・業務自動化の実績。">
+<!--
+  実績の足し方（このページの #works）
+  1. 下の「実績テンプレート」コメントの <article> を、.works の先頭にコピーする（新しい順に並べる）
+  2. data-cat に分類を空白区切りで入れる: aio（AI検索対策・サイト改善） / ai（AI導入・業務自動化） / line（LINE・SNS） / dev（Web・アプリ開発） / partner（伴走支援）
+  3. クライアント名は出さず業種で書く。数字があれば .result に1行で
+  4. トップ（index.html #works）に出したいものは、そちらにも同じ <article> を置く（最大3件）
+  分類ボタンの件数は js/main.js が数える。件数0の分類ボタンは自動で隠れる。
+  プロダクトを足すときは .products に <article class="product"> を追加し、JSON-LD にも1件足す。
+-->
+<meta property="og:title" content="プロダクト・実績｜株式会社ZUDIA">
+<meta property="og:description" content="PostonAI ほか自社プロダクトと、AI導入・AI検索対策・サイト改善の実績。">
+<meta property="og:url" content="https://zudia.jp/products.html">
+<meta property="og:image" content="https://zudia.jp/assets/zudia-primary.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://zudia.jp/products.html">
+<link rel="icon" type="image/png" href="assets/zudia-symbol.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Nunito+Sans:wght@600;700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/main.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://zudia.jp/products.html#postonai",
+      "name": "PostonAI",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "SNS運用をAIで自動化するWebシステム。note・X・Instagram・Facebook・Threads への予約投稿、複数の生成AIによる文章生成、投稿テンプレート、画像・動画ライブラリ、Xの自動返信。",
+      "publisher": { "@id": "https://zudia.jp/#org" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://umaimeshi.com/#site",
+      "name": "ウマぃ飯",
+      "url": "https://umaimeshi.com/",
+      "description": "競馬場のグルメを入口にしたグルメサイト。",
+      "publisher": { "@id": "https://zudia.jp/#org" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://zudia.jp/" },
+        { "@type": "ListItem", "position": 2, "name": "プロダクト・実績", "item": "https://zudia.jp/products.html" }
+      ]
+    },
+    { "@type": "Organization", "@id": "https://zudia.jp/#org", "name": "株式会社ZUDIA", "url": "https://zudia.jp/" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="./" aria-label="ZUDIA トップへ">
+      <img src="assets/zudia-symbol.png" alt="" width="38" height="29">
+      <span>
+        <span class="brand-name">ZUDIA</span><br>
+        <span class="brand-tag">TOWARD YOU</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="サイト内">
+      <a href="./#about">私たちについて</a>
+      <a href="./#service">サービス</a>
+      <a href="products.html" aria-current="page">プロダクト・実績</a>
+      <a href="./#approach">進め方</a>
+      <a href="./#company">会社概要</a>
+      <a class="btn btn-primary" href="#contact">相談する</a>
+    </nav>
+    <details class="menu">
+      <summary>MENU</summary>
+      <div class="menu-list">
+        <a href="./#about">私たちについて</a>
+        <a href="./#service">サービス</a>
+        <a href="products.html" aria-current="page">プロダクト・実績</a>
+        <a href="./#approach">進め方</a>
+        <a href="./#company">会社概要</a>
+        <a href="#contact">相談する</a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow">Products &amp; Works</p>
+      <h1><span class="line" style="--d:.05s">つくって、</span><span class="line" style="--d:.2s"><span class="grad-text">動かして</span>きたもの。</span></h1>
+      <p class="lead reveal" style="--d:.35s">ZUDIAは支援の仕事と並行して、自分たちのプロダクトも作り、運用しています。自分で動かして分かったことを、お客様の支援に返しています。</p>
+      <div class="anchor-nav reveal" style="--d:.45s">
+        <a class="btn btn-primary" href="#products">プロダクト <span class="arrow">↓</span></a>
+        <a class="btn btn-ghost" href="#works">実績 <span class="arrow">↓</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- プロダクト -->
+  <section class="section tint" id="products">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Products</p>
+        <h2 class="h2">自社プロダクト</h2>
+        <p>導入のご相談、デモのご依頼はメールで受け付けています。</p>
+      </div>
+      <div class="products" data-stagger>
+        <article class="product reveal" id="postonai">
+          <div class="product-head"><h3 class="product-name">PostonAI</h3><span class="status is-live">稼働中</span></div>
+          <p class="product-cat">SNS運用の自動化／Webシステム</p>
+          <p class="product-lead">ネタ集めから投稿まで、SNS運用をAIでまとめて回す。</p>
+          <p>SNS運用で一番時間がかかるのは、毎日の「何を書くか」と「投稿作業」です。PostonAI は、情報収集・テーマ選定・文章作成・画像準備・投稿までを、ひとつの管理画面で回せるようにしました。クライアントのアカウント運用で稼働しています。</p>
+          <ul class="feature-list" aria-label="主な機能">
+            <li>note・X・Instagram・Facebook・Threads への予約投稿と一括操作</li>
+            <li>複数の生成AI（OpenAI・Gemini・Claude など）を使い分けた文章生成</li>
+            <li>投稿テンプレート、画像・動画ライブラリ</li>
+            <li>X の DM 自動返信、自動いいね</li>
+            <li>外部データの取り込みによる記事の自動更新、投稿ログ</li>
+          </ul>
+          <div class="product-actions">
+            <a class="btn btn-hot" href="mailto:info@zudia.jp?subject=PostonAIについて">導入を相談する <span class="arrow">→</span></a>
+          </div>
+        </article>
+        <article class="product reveal" id="umaimeshi">
+          <div class="product-head"><h3 class="product-name">ウマぃ飯</h3><span class="status is-live">公開中</span></div>
+          <p class="product-cat">グルメメディア</p>
+          <p class="product-lead">競馬場の、うまい飯。</p>
+          <p>競馬場には、レースを知らなくても楽しめるグルメがあります。ウマぃ飯は、食事を入口に競馬場へ足を運ぶ人を増やすためのグルメサイトです。JRA公式を一次情報に、実在する店舗とメニューを紹介し、会員の口コミを集めています。</p>
+          <ul class="feature-list" aria-label="特徴">
+            <li>JRA公式情報をもとにした競馬場ごとの店舗・メニュー</li>
+            <li>会員登録と口コミ投稿</li>
+            <li>自社で企画・開発・運営</li>
+          </ul>
+          <div class="product-actions">
+            <a class="btn btn-ghost" href="https://umaimeshi.com/" target="_blank" rel="noopener">サイトを見る <span class="arrow">↗</span></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 実績：分類で絞り込める。本文はすべて HTML に書く -->
+  <section class="section" id="works">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Works</p>
+        <h2 class="h2">実績</h2>
+        <p>実際の業務を題材に、担当者と一緒に作ったものです。クライアント名は伏せ、業種で記載しています。<span class="chip">要確認：掲載可否・表記</span></p>
+      </div>
+
+      <div class="filters reveal" role="group" aria-label="分類で絞り込む">
+        <button type="button" data-filter="all" aria-pressed="true">すべて</button>
+        <button type="button" data-filter="aio" aria-pressed="false">AI検索対策・サイト改善</button>
+        <button type="button" data-filter="ai" aria-pressed="false">AI導入・業務自動化</button>
+        <button type="button" data-filter="line" aria-pressed="false">LINE・SNS</button>
+        <button type="button" data-filter="dev" aria-pressed="false">Web・アプリ開発</button>
+        <button type="button" data-filter="partner" aria-pressed="false">伴走支援</button>
+      </div>
+      <p class="sr-only" id="works-status" aria-live="polite"></p>
+
+      <!-- 実績テンプレート（コピーして .works の先頭に貼る）
+      <article class="work reveal" data-cat="aio">
+        <div class="work-meta"><span class="chip chip-area">分類の表示名</span><time datetime="2026-10">2026.10</time></div>
+        <h3 class="h3">業種＋何をしたか</h3>
+        <p>課題と、やったこと。2〜3文。</p>
+        <p class="result">成果（数字があれば数字で）</p>
+      </article>
+      -->
+      <div class="works" data-stagger>
+        <article class="work reveal" data-cat="aio">
+          <div class="work-meta"><span class="chip chip-area">AI検索対策・サイト改善</span><time datetime="2026-10">2026</time></div>
+          <h3 class="h3">大衆居酒屋の集客立て直しとAI検索対策</h3>
+          <p>売上・予約・口コミの数字を分析し、公式サイトとグルメ媒体・Googleビジネスプロフィールで食い違っていた情報を統一。5つの生成AIに150件の質問をして現状を実測し、FAQ19問と構造化データ、llms.txt を整備しました。</p>
+          <p class="result">公式サイトのリニューアルを進行中</p>
+        </article>
+        <article class="work reveal" data-cat="ai partner">
+          <div class="work-meta"><span class="chip chip-area">伴走支援</span><time datetime="2026">2026</time></div>
+          <h3 class="h3">工業系企業のAI業務改善伴走</h3>
+          <p>現場へのヒアリングで31の課題を洗い出し、効果と手間で優先順位を付けて整理。書類の照合作業から、AIを使った照合ツールの試作に着手しました。</p>
+          <p class="result">月次の伴走支援として継続中</p>
+        </article>
+        <article class="work reveal" data-cat="ai partner">
+          <div class="work-meta"><span class="chip chip-area">業務自動化</span><time datetime="2026">2026</time></div>
+          <h3 class="h3">不動産・民泊運営会社の物件精査システム</h3>
+          <p>物件資料のPDFからAIで21項目を抜き出し、精査の手間を減らす仕組みを構築。担当者と一緒に簡易ツールを作るAI業務改善ワークショップも行いました。</p>
+          <p class="result">実際の資料で全項目を正しく抽出</p>
+        </article>
+        <article class="work reveal" data-cat="line dev">
+          <div class="work-meta"><span class="chip chip-area">SNS運用</span></div>
+          <h3 class="h3">SNS自動化サービス「PostonAI」</h3>
+          <p>情報収集、テーマ選定、文章作成、画像準備、投稿準備までの流れをAIで効率化。複数のSNSへの予約投稿をひとつの管理画面にまとめました。</p>
+          <p class="result">SNS運用にかかる作業時間を短縮</p>
+        </article>
+        <article class="work reveal" data-cat="line ai">
+          <div class="work-meta"><span class="chip chip-area">LINE・AI</span></div>
+          <h3 class="h3">動物病院の公式LINE AIチャットボット</h3>
+          <p>問い合わせ対応、予約案内、緊急時対応、スタッフへの引き継ぎまでの会話を設計。新着情報をAIで要約し、チャットボットへ反映する仕組みも構築しました。</p>
+          <p class="result">人の対応が必要な件数を削減</p>
+        </article>
+        <article class="work reveal" data-cat="ai">
+          <div class="work-meta"><span class="chip chip-area">業務自動化</span></div>
+          <h3 class="h3">飲食店の予約管理</h3>
+          <p>複数の予約媒体から届くメールをAIで読み取り、予約日時・人数・氏名・コースを統一形式で管理できるようにしました。</p>
+        </article>
+        <article class="work reveal" data-cat="ai">
+          <div class="work-meta"><span class="chip chip-area">動画・アバター</span></div>
+          <h3 class="h3">FP会社のAIアバター動画</h3>
+          <p>音声生成とAIアバターを組み合わせ、本人が毎回撮影しなくても動画を制作できる運用を構築しました。</p>
+        </article>
+      </div>
+
+      <div class="works-foot reveal">
+        <p>掲載できない案件も多数あります。近い事例がないかは、お気軽にお問い合わせください。</p>
+        <a class="link-arrow" href="./#service">サービス内容を見る <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- お問い合わせ -->
+  <section class="section on-navy contact" id="contact">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="eyebrow">Contact</p>
+        <div class="section-head">
+          <h2 class="h2">プロダクトも、支援も。<br>まずはご相談ください。</h2>
+          <p>導入のご相談、デモのご依頼、同じような仕組みを自社で作りたいというご相談も受け付けています。</p>
+        </div>
+      </div>
+      <div class="contact-actions reveal" style="--d:.15s">
+        <a class="btn btn-primary" href="mailto:info@zudia.jp?subject=ZUDIAへの相談">メールで相談する <span class="arrow">→</span></a>
+        <p class="note">info@zudia.jp</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer on-navy section">
+  <div class="wrap">
+    <div class="footer-top">
+      <a class="brand" href="./" aria-label="ZUDIA トップへ">
+        <img src="assets/zudia-symbol.png" alt="" width="38" height="29">
+        <span>
+          <span class="brand-name">ZUDIA</span><br>
+          <span class="brand-tag">TOWARD YOU</span>
+        </span>
+      </a>
+      <p class="footer-message">Closer People. Brighter Tomorrows.</p>
+    </div>
+    <nav class="footer-nav" aria-label="フッター">
+      <a href="./#about">私たちについて</a>
+      <a href="./#service">サービス</a>
+      <a href="products.html">プロダクト・実績</a>
+      <a href="./#approach">進め方</a>
+      <a href="./#message">代表メッセージ</a>
+      <a href="./#company">会社概要</a>
+      <a href="#contact">お問い合わせ</a>
+    </nav>
+    <div class="footer-bottom">
+      <span class="en">© <span data-year>2026</span> ZUDIA Inc.</span>
+      <span>もっと、あなたへ。</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

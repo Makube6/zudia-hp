@@ -1,0 +1,5 @@
+# 株式会社ZUDIA — 検索エンジン・生成AIのクローラをすべて許可する
+User-agent: *
+Allow: /
+
+Sitemap: https://zudia.jp/sitemap.xml
