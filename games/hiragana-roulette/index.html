@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ひらがなルーレット</title>
+<meta name="description" content="ルーレットで出たひらがなから始まる言葉を言うゲーム。">
+<meta name="robots" content="noindex">
+<style>
+  :root {
+    --bg: #fff8ef;
+    --card: #ffffff;
+    --ink: #2b2b33;
+    --muted: #7a7a86;
+    --accent: #ff6b4a;
+    --accent-ink: #ffffff;
+    --ok: #2bb673;
+    --line: #eadfce;
+    --shadow: 0 6px 20px rgba(60, 40, 10, .10);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1c1b22;
+      --card: #26252e;
+      --ink: #f1eee8;
+      --muted: #a7a3b0;
+      --line: #3a3843;
+      --shadow: 0 6px 20px rgba(0, 0, 0, .35);
+    }
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html, body { margin: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Hiragino Maru Gothic ProN", "Hiragino Sans", "Noto Sans JP", "Yu Gothic", sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 16px;
+  }
+  main { width: 100%; max-width: 520px; text-align: center; }
+  h1 { font-size: clamp(22px, 6vw, 30px); margin: 8px 0 4px; letter-spacing: .05em; }
+  .lead { color: var(--muted); margin: 0 0 16px; font-size: 14px; }
+
+  .wheel-wrap { position: relative; width: min(100%, 420px); margin: 0 auto; aspect-ratio: 1; }
+  canvas { width: 100%; height: 100%; display: block; }
+  .pointer {
+    position: absolute; left: 50%; top: -6px; transform: translateX(-50%);
+    width: 0; height: 0;
+    border-left: 16px solid transparent; border-right: 16px solid transparent;
+    border-top: 30px solid var(--accent);
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,.25));
+    z-index: 2;
+  }
+
+  .result {
+    margin: 16px auto 8px; background: var(--card); border-radius: 20px;
+    box-shadow: var(--shadow); padding: 16px; min-height: 170px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+  }
+  .result .label { color: var(--muted); font-size: 14px; }
+  .result .char { font-size: 84px; line-height: 1; font-weight: 700; color: var(--accent); }
+  .result .char.pop { animation: pop .45s ease-out; }
+  @keyframes pop { 0% { transform: scale(.3); opacity: 0; } 70% { transform: scale(1.15); } 100% { transform: scale(1); opacity: 1; } }
+  .timer { font-size: 18px; font-variant-numeric: tabular-nums; min-height: 1.4em; }
+  .timer.urgent { color: var(--accent); font-weight: 700; }
+  .bar { width: 100%; max-width: 300px; height: 8px; border-radius: 4px; background: var(--line); overflow: hidden; }
+  .bar > i { display: block; height: 100%; width: 100%; background: var(--accent); transition: width .1s linear; }
+
+  .buttons { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 12px 0; }
+  button {
+    font: inherit; font-size: 18px; font-weight: 700; border: 0; border-radius: 999px;
+    padding: 14px 26px; cursor: pointer; transition: transform .08s, opacity .2s;
+    min-width: 120px;
+  }
+  button:active { transform: scale(.96); }
+  button:disabled { opacity: .4; cursor: default; }
+  .spin { background: var(--accent); color: var(--accent-ink); font-size: 22px; padding: 16px 44px; box-shadow: var(--shadow); }
+  .good { background: var(--ok); color: #fff; }
+  .pass { background: var(--line); color: var(--ink); }
+  .ghost { background: transparent; color: var(--muted); font-size: 14px; font-weight: 500; padding: 8px 12px; min-width: 0; text-decoration: underline; }
+
+  .score { display: flex; justify-content: center; gap: 24px; font-size: 15px; color: var(--muted); }
+  .score b { color: var(--ink); font-size: 22px; margin-left: 4px; }
+
+  details {
+    background: var(--card); border-radius: 16px; box-shadow: var(--shadow);
+    padding: 12px 16px; margin: 16px 0; text-align: left;
+  }
+  summary { cursor: pointer; font-weight: 700; }
+  .opt { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); font-size: 15px; }
+  .opt:first-of-type { border-top: 0; }
+  select, input[type=checkbox] { font: inherit; accent-color: var(--accent); }
+  input[type=checkbox] { width: 20px; height: 20px; }
+  select { padding: 4px 8px; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); }
+
+  .history { margin-top: 8px; font-size: 14px; color: var(--muted); word-break: break-all; min-height: 1.5em; }
+  .history span { display: inline-block; margin: 2px; padding: 2px 8px; border-radius: 999px; background: var(--card); box-shadow: var(--shadow); color: var(--ink); }
+  .history span.ok { outline: 2px solid var(--ok); }
+</style>
+</head>
+<body>
+<main>
+  <h1>ひらがなルーレット</h1>
+  <p class="lead">出たひらがなから始まる言葉を言おう！</p>
+
+  <div class="wheel-wrap">
+    <div class="pointer" aria-hidden="true"></div>
+    <canvas id="wheel" aria-label="ひらがなルーレット"></canvas>
+  </div>
+
+  <div class="result" aria-live="polite">
+    <div class="label" id="label">スタートを押してね</div>
+    <div class="char" id="char">？</div>
+    <div class="timer" id="timer"></div>
+    <div class="bar" id="bar" hidden><i id="barFill"></i></div>
+  </div>
+
+  <div class="buttons" id="spinRow">
+    <button class="spin" id="spinBtn">スタート</button>
+  </div>
+  <div class="buttons" id="answerRow" hidden>
+    <button class="good" id="okBtn">言えた！</button>
+    <button class="pass" id="passBtn">パス</button>
+  </div>
+
+  <div class="score">
+    <div>言えた<b id="okCount">0</b></div>
+    <div>パス<b id="passCount">0</b></div>
+    <div>のこり<b id="remain">0</b></div>
+  </div>
+  <div class="history" id="history"></div>
+
+  <details>
+    <summary>せってい</summary>
+    <label class="opt">制限時間
+      <select id="timeSel">
+        <option value="5">5秒</option>
+        <option value="10" selected>10秒</option>
+        <option value="15">15秒</option>
+        <option value="30">30秒</option>
+        <option value="0">なし</option>
+      </select>
+    </label>
+    <label class="opt">濁音・半濁音（が・ぱ など）も入れる
+      <input type="checkbox" id="dakuon">
+    </label>
+    <label class="opt">一度出た文字はもう出さない
+      <input type="checkbox" id="noRepeat" checked>
+    </label>
+    <label class="opt">効果音
+      <input type="checkbox" id="sound" checked>
+    </label>
+    <div class="opt"><span>スコアと出た文字をリセット</span><button class="ghost" id="resetBtn">リセット</button></div>
+  </details>
+</main>
+
+<script>
+(() => {
+  const BASIC = [..."あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわ"];
+  const DAKU  = [..."がぎぐげござじずぜぞだでどばびぶべぼぱぴぷぺぽ"];
+  const TAU = Math.PI * 2;
+
+  const $ = id => document.getElementById(id);
+  const canvas = $("wheel"), ctx = canvas.getContext("2d");
+  const el = {
+    label: $("label"), char: $("char"), timer: $("timer"), bar: $("bar"), barFill: $("barFill"),
+    spinRow: $("spinRow"), answerRow: $("answerRow"), spinBtn: $("spinBtn"),
+    okBtn: $("okBtn"), passBtn: $("passBtn"), okCount: $("okCount"), passCount: $("passCount"),
+    remain: $("remain"), history: $("history"),
+    timeSel: $("timeSel"), dakuon: $("dakuon"), noRepeat: $("noRepeat"), sound: $("sound"), resetBtn: $("resetBtn"),
+  };
+
+  let used = new Set();
+  let items = [];
+  let rotation = 0;
+  let spinning = false;
+  let current = null;
+  let timerId = null;
+  let score = { ok: 0, pass: 0 };
+
+  // ---- 文字リスト ----
+  function pool() {
+    return el.dakuon.checked ? BASIC.concat(DAKU) : BASIC.slice();
+  }
+  function rebuild() {
+    let list = pool();
+    if (el.noRepeat.checked) {
+      list = list.filter(c => !used.has(c));
+      if (list.length === 0) { used.clear(); list = pool(); renderHistory(); }
+    }
+    items = list;
+    el.remain.textContent = el.noRepeat.checked ? items.length : "∞";
+    draw();
+  }
+
+  // ---- 描画 ----
+  function resize() {
+    const size = canvas.clientWidth;
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = size * dpr;
+    canvas.height = size * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    draw();
+  }
+  function draw() {
+    const size = canvas.clientWidth;
+    if (!size) return;
+    const c = size / 2, r = c - 4;
+    const n = items.length, seg = TAU / n;
+    ctx.clearRect(0, 0, size, size);
+    ctx.save();
+    ctx.translate(c, c);
+    ctx.rotate(rotation);
+    for (let i = 0; i < n; i++) {
+      const a0 = -Math.PI / 2 + i * seg;
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.arc(0, 0, r, a0, a0 + seg);
+      ctx.closePath();
+      ctx.fillStyle = `hsl(${(i * 360 / n) | 0} 80% ${i % 2 ? 72 : 64}%)`;
+      ctx.fill();
+      ctx.strokeStyle = "rgba(255,255,255,.8)";
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      ctx.save();
+      ctx.rotate(a0 + seg / 2);
+      const fs = Math.max(12, Math.min(34, r * seg * 0.62));
+      ctx.font = `700 ${fs}px "Hiragino Maru Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif`;
+      ctx.fillStyle = "#2b2b33";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.translate(r - fs * 0.85, 0);
+      ctx.rotate(Math.PI / 2);
+      ctx.fillText(items[i], 0, 0);
+      ctx.restore();
+    }
+    ctx.restore();
+
+    // 中心
+    ctx.beginPath();
+    ctx.arc(c, c, r * 0.16, 0, TAU);
+    ctx.fillStyle = "#fff";
+    ctx.fill();
+    ctx.lineWidth = 4;
+    ctx.strokeStyle = "#ff6b4a";
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(c, c, r, 0, TAU);
+    ctx.lineWidth = 6;
+    ctx.strokeStyle = "#ff6b4a";
+    ctx.stroke();
+  }
+  function indexAtPointer() {
+    const seg = TAU / items.length;
+    const local = ((-rotation % TAU) + TAU) % TAU;
+    return Math.floor(local / seg) % items.length;
+  }
+
+  // ---- 効果音 ----
+  let audio = null;
+  function beep(freq, dur, vol = 0.08, type = "triangle") {
+    if (!el.sound.checked) return;
+    try {
+      audio = audio || new (window.AudioContext || window.webkitAudioContext)();
+      const o = audio.createOscillator(), g = audio.createGain();
+      o.type = type; o.frequency.value = freq;
+      g.gain.setValueAtTime(vol, audio.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.0001, audio.currentTime + dur);
+      o.connect(g).connect(audio.destination);
+      o.start(); o.stop(audio.currentTime + dur);
+    } catch (e) { /* 音が出なくてもゲームは続ける */ }
+  }
+  const fanfare = () => [523, 659, 784, 1047].forEach((f, i) => setTimeout(() => beep(f, .18, .1), i * 90));
+
+  // ---- 回転 ----
+  function spin() {
+    if (spinning) return;
+    stopTimer();
+    rebuild();
+    spinning = true;
+    el.spinBtn.disabled = true;
+    el.label.textContent = "まわってる…";
+    el.char.textContent = "？";
+    el.char.classList.remove("pop");
+    el.timer.textContent = "";
+    el.bar.hidden = true;
+
+    const n = items.length, seg = TAU / n;
+    const target = Math.floor(Math.random() * n);
+    const jitter = (Math.random() - 0.5) * 0.7;           // 区切り線ぴったりに止まらないよう ±35%
+    const base = -(target + 0.5 + jitter) * seg;
+    const delta = (((base - rotation) % TAU) + TAU) % TAU;
+    const start = rotation;
+    const end = rotation + TAU * (5 + Math.floor(Math.random() * 3)) + delta;
+    const duration = 3800 + Math.random() * 1200;
+    const t0 = performance.now();
+    let lastIdx = indexAtPointer();
+
+    function frame(now) {
+      const t = Math.min(1, (now - t0) / duration);
+      const eased = 1 - Math.pow(1 - t, 4);
+      rotation = start + (end - start) * eased;
+      draw();
+      const idx = indexAtPointer();
+      if (idx !== lastIdx) { lastIdx = idx; beep(900, .04, .05, "square"); }
+      if (t < 1) requestAnimationFrame(frame);
+      else land(items[indexAtPointer()]);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function land(ch) {
+    spinning = false;
+    rotation %= TAU;
+    current = ch;
+    el.char.textContent = ch;
+    void el.char.offsetWidth;
+    el.char.classList.add("pop");
+    el.label.textContent = `「${ch}」から始まる言葉は？`;
+    fanfare();
+    el.spinRow.hidden = true;
+    el.answerRow.hidden = false;
+    startTimer();
+  }
+
+  // ---- タイマー ----
+  function startTimer() {
+    const sec = Number(el.timeSel.value);
+    if (!sec) { el.timer.textContent = ""; return; }
+    const endAt = performance.now() + sec * 1000;
+    el.bar.hidden = false;
+    let lastShown = null;
+    const tick = () => {
+      const left = Math.max(0, endAt - performance.now());
+      const s = Math.ceil(left / 1000);
+      el.timer.textContent = `のこり ${s} 秒`;
+      el.timer.classList.toggle("urgent", s <= 3);
+      el.barFill.style.width = `${(left / (sec * 1000)) * 100}%`;
+      if (s !== lastShown && s <= 3 && s > 0) beep(660, .1);
+      lastShown = s;
+      if (left <= 0) {
+        stopTimer();
+        el.timer.textContent = "時間切れ！";
+        beep(220, .4, .12, "sawtooth");
+        finish(false);
+      }
+    };
+    tick();
+    timerId = setInterval(tick, 100);
+  }
+  function stopTimer() {
+    clearInterval(timerId);
+    timerId = null;
+    el.timer.classList.remove("urgent");
+  }
+
+  // ---- 結果 ----
+  function finish(ok) {
+    if (current === null) return;
+    stopTimer();
+    if (ok) { score.ok++; el.timer.textContent = "すごい！"; beep(880, .15, .1); setTimeout(() => beep(1175, .2, .1), 110); }
+    else score.pass++;
+    used.add(current);
+    addHistory(current, ok);
+    current = null;
+    el.okCount.textContent = score.ok;
+    el.passCount.textContent = score.pass;
+    el.answerRow.hidden = true;
+    el.spinRow.hidden = false;
+    el.spinBtn.disabled = false;
+    el.spinBtn.textContent = "もう一回";
+    el.bar.hidden = true;
+    rebuild();
+    el.spinBtn.focus();
+  }
+
+  const log = [];
+  function addHistory(ch, ok) { log.push({ ch, ok }); renderHistory(); }
+  function renderHistory() {
+    el.history.innerHTML = log.map(h => `<span class="${h.ok ? "ok" : ""}">${h.ch}</span>`).join("");
+  }
+
+  function reset() {
+    if (spinning) return;
+    stopTimer();
+    used.clear(); log.length = 0; current = null;
+    score = { ok: 0, pass: 0 };
+    el.okCount.textContent = 0; el.passCount.textContent = 0;
+    el.label.textContent = "スタートを押してね";
+    el.char.textContent = "？";
+    el.timer.textContent = "";
+    el.bar.hidden = true;
+    el.answerRow.hidden = true; el.spinRow.hidden = false;
+    el.spinBtn.disabled = false; el.spinBtn.textContent = "スタート";
+    renderHistory();
+    rebuild();
+  }
+
+  el.spinBtn.addEventListener("click", spin);
+  el.okBtn.addEventListener("click", () => finish(true));
+  el.passBtn.addEventListener("click", () => finish(false));
+  el.resetBtn.addEventListener("click", reset);
+  el.dakuon.addEventListener("change", () => { if (!spinning) rebuild(); });
+  el.noRepeat.addEventListener("change", () => { if (!spinning) rebuild(); });
+  document.addEventListener("keydown", e => {
+    if (e.code !== "Space" || e.target.tagName === "SELECT") return;
+    e.preventDefault();
+    if (!el.spinRow.hidden && !spinning) spin();
+    else if (!el.answerRow.hidden) finish(true);
+  });
+  window.addEventListener("resize", resize);
+
+  rebuild();
+  resize();
+})();
+</script>
+</body>
+</html>
