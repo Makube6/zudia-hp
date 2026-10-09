@@ -99,12 +99,38 @@
   .history { margin-top: 8px; font-size: 14px; color: var(--muted); word-break: break-all; min-height: 1.5em; }
   .history span { display: inline-block; margin: 2px; padding: 2px 8px; border-radius: 999px; background: var(--card); box-shadow: var(--shadow); color: var(--ink); }
   .history span.ok { outline: 2px solid var(--ok); }
+
+  /* 対戦モード */
+  .turn { margin: 0 auto 10px; display: inline-flex; gap: 10px; align-items: center; background: var(--card); box-shadow: var(--shadow); border-radius: 999px; padding: 8px 18px; font-size: 15px; }
+  .turn b { color: var(--accent); font-size: 20px; }
+  .turn small { color: var(--muted); }
+  .board { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+  .board div { background: var(--card); box-shadow: var(--shadow); border-radius: 14px; padding: 6px 14px; font-size: 14px; border: 2px solid transparent; }
+  .board div.now { border-color: var(--accent); }
+  .board b { font-size: 20px; margin-left: 6px; }
+  .add-row { display: flex; gap: 8px; padding: 10px 0; }
+  .add-row input { flex: 1; min-width: 0; font: inherit; font-size: 16px; padding: 8px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); }
+  .add-row button { min-width: 0; padding: 8px 18px; font-size: 16px; background: var(--accent); color: var(--accent-ink); }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; padding-bottom: 6px; }
+  .chips span { display: inline-flex; align-items: center; gap: 4px; background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 4px 6px 4px 12px; }
+  .chips button { min-width: 0; padding: 0 8px; font-size: 16px; background: transparent; color: var(--muted); }
+  .note { color: var(--muted); font-size: 13px; margin: 4px 0 8px; }
+
+  .modal { position: fixed; inset: 0; background: rgba(0,0,0,.45); display: flex; align-items: center; justify-content: center; padding: 16px; z-index: 10; }
+  .modal .box { background: var(--card); color: var(--ink); border-radius: 24px; padding: 24px 20px; width: 100%; max-width: 380px; box-shadow: var(--shadow); animation: pop .4s ease-out; }
+  .modal h2 { margin: 0 0 4px; font-size: 24px; }
+  .modal .winner { color: var(--accent); font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+  .modal ol { list-style: none; padding: 0; margin: 0 0 18px; text-align: left; }
+  .modal li { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; border-bottom: 1px solid var(--line); font-size: 17px; }
+  .modal li .rank { display: inline-block; width: 2.2em; font-weight: 700; color: var(--muted); }
+  .modal li.top .rank { color: var(--accent); }
 </style>
 </head>
 <body>
 <main>
   <h1>ひらがなルーレット</h1>
   <p class="lead">出たひらがなから始まる言葉を言おう！</p>
+  <div class="turn" id="turn" hidden></div>
 
   <div class="wheel-wrap">
     <div class="pointer" aria-hidden="true"></div>
@@ -126,12 +152,33 @@
     <button class="pass" id="passBtn">パス</button>
   </div>
 
-  <div class="score">
+  <div class="board" id="board" hidden></div>
+  <div class="score" id="soloScore">
     <div>言えた<b id="okCount">0</b></div>
     <div>パス<b id="passCount">0</b></div>
     <div>のこり<b id="remain">0</b></div>
   </div>
   <div class="history" id="history"></div>
+
+  <details id="versus">
+    <summary>みんなで対戦</summary>
+    <p class="note">プレイヤーを2人以上登録すると、順番に回して点数を競えます。言えたら1点。</p>
+    <form class="add-row" id="addForm">
+      <input id="nameInput" maxlength="12" placeholder="なまえ" autocomplete="off">
+      <button type="submit">追加</button>
+    </form>
+    <div class="chips" id="chips"></div>
+    <label class="opt">1人あたりの回数
+      <select id="roundSel">
+        <option value="3">3回</option>
+        <option value="5" selected>5回</option>
+        <option value="10">10回</option>
+        <option value="0">決めない</option>
+      </select>
+    </label>
+    <div class="opt" id="endRow" hidden><span>ここで終わって結果を見る</span><button class="ghost" id="endBtn" type="button">結果発表</button></div>
+    <p class="note" id="lockNote" hidden>ゲーム中はメンバーを変えられません。変えるときは「せってい」のリセットを押してね。</p>
+  </details>
 
   <details>
     <summary>せってい</summary>
@@ -157,6 +204,15 @@
   </details>
 </main>
 
+<div class="modal" id="modal" hidden>
+  <div class="box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <h2 id="modalTitle">けっか発表</h2>
+    <div class="winner" id="winner"></div>
+    <ol id="ranking"></ol>
+    <button class="spin" id="againBtn">もう一回あそぶ</button>
+  </div>
+</div>
+
 <script>
 (() => {
   const BASIC = [..."あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわ"];
@@ -171,6 +227,10 @@
     okBtn: $("okBtn"), passBtn: $("passBtn"), okCount: $("okCount"), passCount: $("passCount"),
     remain: $("remain"), history: $("history"),
     timeSel: $("timeSel"), dakuon: $("dakuon"), noRepeat: $("noRepeat"), sound: $("sound"), resetBtn: $("resetBtn"),
+    turn: $("turn"), board: $("board"), soloScore: $("soloScore"),
+    addForm: $("addForm"), nameInput: $("nameInput"), chips: $("chips"), roundSel: $("roundSel"), lockNote: $("lockNote"),
+    endRow: $("endRow"), endBtn: $("endBtn"),
+    modal: $("modal"), winner: $("winner"), ranking: $("ranking"), againBtn: $("againBtn"),
   };
 
   let used = new Set();
@@ -180,6 +240,86 @@
   let current = null;
   let timerId = null;
   let score = { ok: 0, pass: 0 };
+
+  // ---- 対戦モード ----
+  let players = [];      // { name, pts }
+  let turnNo = 0;        // これまでに終わった手番の数
+  const versus = () => players.length >= 2;
+  const inGame = () => versus() && (turnNo > 0 || spinning || current !== null);
+  const totalTurns = () => Number(el.roundSel.value) * players.length;  // 0 = 決めない
+  const nowPlayer = () => players[turnNo % players.length];
+
+  function renderPlayers() {
+    el.chips.replaceChildren(...players.map((p, i) => {
+      const chip = document.createElement("span");
+      chip.textContent = p.name;
+      const x = document.createElement("button");
+      x.type = "button";
+      x.textContent = "×";
+      x.setAttribute("aria-label", `${p.name}を消す`);
+      x.disabled = inGame();
+      x.addEventListener("click", () => { if (!inGame()) { players.splice(i, 1); renderPlayers(); } });
+      chip.append(x);
+      return chip;
+    }));
+    const locked = inGame();
+    el.nameInput.disabled = locked;
+    el.addForm.querySelector("button").disabled = locked;
+    el.roundSel.disabled = locked;
+    el.lockNote.hidden = !locked;
+    el.endRow.hidden = !(versus() && turnNo > 0);
+    renderTurn();
+  }
+  function renderTurn() {
+    el.soloScore.hidden = versus();
+    el.board.hidden = !versus();
+    el.turn.hidden = !versus();
+    if (!versus()) return;
+    const p = nowPlayer();
+    const total = totalTurns();
+    const round = Math.floor(turnNo / players.length) + 1;
+    el.turn.replaceChildren();
+    const b = document.createElement("b");
+    b.textContent = p.name;
+    const small = document.createElement("small");
+    const over = total && turnNo >= total;
+    small.textContent = over ? "おわり" : total ? `${round} / ${total / players.length} 回目` : `${round} 回目`;
+    if (over) el.turn.append(small);
+    else el.turn.append(b, "さんの番", small);
+    el.board.replaceChildren(...players.map(q => {
+      const d = document.createElement("div");
+      if (q === p && !over) d.className = "now";
+      const pts = document.createElement("b");
+      pts.textContent = q.pts;
+      d.append(q.name, pts);
+      return d;
+    }));
+  }
+  function showResult() {
+    const sorted = players.slice().sort((a, b) => b.pts - a.pts);
+    const top = sorted[0].pts;
+    const winners = sorted.filter(p => p.pts === top).map(p => p.name);
+    el.winner.textContent = winners.length > 1 ? `${winners.join("さん・")}さんが同点優勝！` : `優勝は ${winners[0]} さん！`;
+    let rank = 0;
+    el.ranking.replaceChildren(...sorted.map((p, i) => {
+      if (i === 0 || p.pts !== sorted[i - 1].pts) rank = i + 1;
+      const li = document.createElement("li");
+      if (rank === 1) li.className = "top";
+      const left = document.createElement("span");
+      const r = document.createElement("span");
+      r.className = "rank";
+      r.textContent = `${rank}位`;
+      left.append(r, p.name);
+      const pts = document.createElement("b");
+      pts.textContent = `${p.pts}点`;
+      li.append(left, pts);
+      return li;
+    }));
+    el.modal.hidden = false;
+    fanfare();
+    setTimeout(fanfare, 450);
+    el.againBtn.focus();
+  }
 
   // ---- 文字リスト ----
   function pool() {
@@ -282,6 +422,7 @@
     stopTimer();
     rebuild();
     spinning = true;
+    renderPlayers();
     el.spinBtn.disabled = true;
     el.label.textContent = "まわってる…";
     el.char.textContent = "？";
@@ -331,17 +472,23 @@
   function startTimer() {
     const sec = Number(el.timeSel.value);
     if (!sec) { el.timer.textContent = ""; return; }
-    const endAt = performance.now() + sec * 1000;
+    const total = sec * 1000;
+    const endAt = performance.now() + total;
     el.bar.hidden = false;
-    let lastShown = null;
+    let nextTick = 0;
     const tick = () => {
-      const left = Math.max(0, endAt - performance.now());
+      const now = performance.now();
+      const left = Math.max(0, endAt - now);
       const s = Math.ceil(left / 1000);
       el.timer.textContent = `のこり ${s} 秒`;
       el.timer.classList.toggle("urgent", s <= 3);
-      el.barFill.style.width = `${(left / (sec * 1000)) * 100}%`;
-      if (s !== lastShown && s <= 3 && s > 0) beep(660, .1);
-      lastShown = s;
+      el.barFill.style.width = `${(left / total) * 100}%`;
+      // チクタク音：残り時間が減るほど間隔が短く、音が高くなる（1秒おき → 0.1秒おき）
+      if (left > 0 && now >= nextTick) {
+        const ratio = left / total;
+        beep(500 + 600 * (1 - ratio), .05, .07, "square");
+        nextTick = now + 100 + 900 * ratio * ratio;
+      }
       if (left <= 0) {
         stopTimer();
         el.timer.textContent = "時間切れ！";
@@ -350,7 +497,7 @@
       }
     };
     tick();
-    timerId = setInterval(tick, 100);
+    timerId = setInterval(tick, 20);
   }
   function stopTimer() {
     clearInterval(timerId);
@@ -364,6 +511,10 @@
     stopTimer();
     if (ok) { score.ok++; el.timer.textContent = "すごい！"; beep(880, .15, .1); setTimeout(() => beep(1175, .2, .1), 110); }
     else score.pass++;
+    if (versus()) {
+      if (ok) nowPlayer().pts++;
+      turnNo++;
+    }
     used.add(current);
     addHistory(current, ok);
     current = null;
@@ -375,6 +526,17 @@
     el.spinBtn.textContent = "もう一回";
     el.bar.hidden = true;
     rebuild();
+    renderPlayers();
+    if (versus()) {
+      el.spinBtn.textContent = "回す";
+      el.label.textContent = `つぎは ${nowPlayer().name} さん`;
+      if (totalTurns() && turnNo >= totalTurns()) {
+        el.label.textContent = "ゲーム終了！";
+        el.spinBtn.disabled = true;
+        setTimeout(showResult, 700);
+        return;
+      }
+    }
     el.spinBtn.focus();
   }
 
@@ -396,18 +558,35 @@
     el.bar.hidden = true;
     el.answerRow.hidden = true; el.spinRow.hidden = false;
     el.spinBtn.disabled = false; el.spinBtn.textContent = "スタート";
+    turnNo = 0;
+    players.forEach(p => { p.pts = 0; });
+    el.modal.hidden = true;
     renderHistory();
     rebuild();
+    renderPlayers();
+    if (versus()) el.label.textContent = `さいしょは ${nowPlayer().name} さん`;
   }
 
   el.spinBtn.addEventListener("click", spin);
   el.okBtn.addEventListener("click", () => finish(true));
   el.passBtn.addEventListener("click", () => finish(false));
   el.resetBtn.addEventListener("click", reset);
+  el.againBtn.addEventListener("click", reset);
+  el.roundSel.addEventListener("change", renderTurn);
+  el.endBtn.addEventListener("click", () => { if (!spinning && current === null) showResult(); });
+  el.addForm.addEventListener("submit", e => {
+    e.preventDefault();
+    const name = el.nameInput.value.trim();
+    if (!name || inGame()) return;
+    players.push({ name, pts: 0 });
+    el.nameInput.value = "";
+    renderPlayers();
+    if (versus() && turnNo === 0) el.label.textContent = `さいしょは ${nowPlayer().name} さん`;
+  });
   el.dakuon.addEventListener("change", () => { if (!spinning) rebuild(); });
   el.noRepeat.addEventListener("change", () => { if (!spinning) rebuild(); });
   document.addEventListener("keydown", e => {
-    if (e.code !== "Space" || e.target.tagName === "SELECT") return;
+    if (e.code !== "Space" || ["SELECT", "INPUT"].includes(e.target.tagName) || !el.modal.hidden) return;
     e.preventDefault();
     if (!el.spinRow.hidden && !spinning) spin();
     else if (!el.answerRow.hidden) finish(true);
@@ -416,6 +595,7 @@
 
   rebuild();
   resize();
+  renderPlayers();
 })();
 </script>
 </body>
