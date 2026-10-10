@@ -8,7 +8,7 @@
 <!--
   実績の足し方（このページの #works）
   1. 下の「実績テンプレート」コメントの <article> を、.works の先頭にコピーする（新しい順に並べる）
-  2. data-cat に分類を空白区切りで入れる: aio（AI検索対策・サイト改善） / ai（AI導入・業務自動化） / line（LINE・SNS） / dev（Web・アプリ開発） / partner（伴走支援）
+  2. data-cat に分類を空白区切りで入れる（注目事例 is-feature は1件だけ。入れ替えるときは中身を差し替える）: aio（AI検索対策・サイト改善） / ai（AI導入・業務自動化） / line（LINE・SNS） / dev（Web・アプリ開発） / partner（伴走支援）
   3. クライアント名は出さず業種で書く。数字があれば .result に1行で
   4. トップ（index.html #works）に出したいものは、そちらにも同じ <article> を置く（最大3件）
   分類ボタンの件数は js/main.js が数える。件数0の分類ボタンは自動で隠れる。
@@ -156,7 +156,7 @@
       <div class="section-head reveal">
         <p class="eyebrow">Works</p>
         <h2 class="h2">実績</h2>
-        <p>実際の業務を題材に、担当者と一緒に作ったものです。クライアント名は伏せ、業種で記載しています。<span class="chip">要確認：掲載可否・表記</span></p>
+        <p>実際の業務を題材に、担当者と一緒に作ったものです。クライアント名は伏せ、業種で記載しています。</p>
       </div>
 
       <div class="filters reveal" role="group" aria-label="分類で絞り込む">
@@ -169,54 +169,182 @@
       </div>
       <p class="sr-only" id="works-status" aria-live="polite"></p>
 
-      <!-- 実績テンプレート（コピーして .works の先頭に貼る）
+      <!-- 実績テンプレート（コピーして .works の注目事例の直後に貼る。新しい順）
+        カバーの色: on-navy（紺） / tone-hot（オレンジ） / tone-cream（クリーム）を前後で交互に
+        数字は <span data-count>150</span> のように書くと表示時に数え上がる。数字がなければ work-kpi に is-word を付けて短い言葉を置く
       <article class="work reveal" data-cat="aio">
-        <div class="work-meta"><span class="chip chip-area">分類の表示名</span><time datetime="2026-10">2026.10</time></div>
-        <h3 class="h3">業種＋何をしたか</h3>
-        <p>課題と、やったこと。2〜3文。</p>
-        <p class="result">成果（数字があれば数字で）</p>
+        <div class="work-cover tone-hot">
+          <p class="work-en"><span>English Label</span></p>
+          <p class="work-kpi"><b><span data-count>150</span></b><span class="unit">件</span><small>数字の意味</small></p>
+        </div>
+        <div class="work-body">
+          <div class="work-meta"><span class="chip chip-area">業種</span></div>
+          <h3 class="h3">業種＋何をしたか</h3>
+          <p>課題と、やったこと。2〜3文。</p>
+          <ul class="work-tags"><li>やったこと</li><li>やったこと</li></ul>
+          <p class="result">成果（数字があれば数字で）</p>
+        </div>
       </article>
       -->
       <div class="works" data-stagger>
+        <article class="work is-feature reveal" data-cat="aio">
+          <div class="work-cover on-navy">
+            <p class="work-en"><span>AI Search Optimization</span><span>Case Study</span></p>
+            <p class="work-kpi is-word"><b>AI Overviews が<br>公式サイトを引用</b><small>Google の AI による概要で、公式の回答ページが引用されるようになりました。ChatGPT の一般的な質問でも、初めて推薦を獲得しています。</small></p>
+            <div class="work-stats">
+              <div><b><span data-count>9</span><span class="unit">%</span></b><span>Google に登録されたページの増加（207→225）</span></div>
+              <div><b><span data-count>15</span><span class="unit">%</span></b><span>重複で評価されないページの減少（240→204）</span></div>
+              <div><b><span data-count>416</span><span class="unit">URL</span></b><span>サイトマップを自動で生成</span></div>
+            </div>
+          </div>
+          <div class="work-body">
+            <div class="work-meta"><span class="chip chip-area">金融・FP相談 Q&amp;Aサイト</span><time datetime="2026">2026</time></div>
+            <h3 class="h3">FP相談Q&amp;AサイトのAI検索対策</h3>
+            <p>5つの生成AIで、サイトが名前を挙げられるか・引用されるかを実測。そのうえで、AIと検索エンジンに正しく読まれるための土台を実装しました。重複ページの整理、記事ごとのタイトルと説明文、Q&amp;Aと運営会社の構造化データ、サイトマップの自動生成、llms.txt、検証環境が検索に出ないようにする設定までを行っています。</p>
+            <ul class="work-tags"><li>AIO診断</li><li>技術基盤の実装</li><li>構造化データ</li><li>効果測定</li></ul>
+            <p class="result">施策から1か月で、AI検索からの引用が始まる</p>
+            <p class="work-note">数値は施策前後の Google Search Console（2026年9月→10月）</p>
+          </div>
+        </article>
         <article class="work reveal" data-cat="aio">
-          <div class="work-meta"><span class="chip chip-area">AI検索対策・サイト改善</span><time datetime="2026-10">2026</time></div>
-          <h3 class="h3">大衆居酒屋の集客立て直しとAI検索対策</h3>
-          <p>売上・予約・口コミの数字を分析し、公式サイトとグルメ媒体・Googleビジネスプロフィールで食い違っていた情報を統一。5つの生成AIに150件の質問をして現状を実測し、FAQ19問と構造化データ、llms.txt を整備しました。</p>
-          <p class="result">公式サイトのリニューアルを進行中</p>
+          <div class="work-cover tone-hot">
+            <p class="work-en"><span>AI Search × Local</span></p>
+            <p class="work-kpi"><b><span data-count>150</span></b><span class="unit">件</span><small>5つの生成AIで実測した質問の数</small></p>
+          </div>
+          <div class="work-body">
+            <div class="work-meta"><span class="chip chip-area">飲食・大衆居酒屋</span></div>
+            <h3 class="h3">大衆居酒屋の集客立て直しとAI検索対策</h3>
+            <p>売上・予約・口コミの数字を分析し、公式サイトとグルメ媒体・Googleビジネスプロフィールで食い違っていた情報を統一。AIでの見え方を実測したうえで、FAQ19問と構造化データ、llms.txt を整備しました。</p>
+            <ul class="work-tags"><li>数字分析</li><li>媒体情報の統一</li><li>FAQ・構造化データ</li></ul>
+            <p class="result">公式サイトのリニューアルを進行中</p>
+          </div>
+        </article>
+        <article class="work reveal" data-cat="dev aio">
+          <div class="work-cover on-navy">
+            <p class="work-en"><span>Media & CMS</span></p>
+            <p class="work-kpi is-word"><b>AI × 人</b><small>AIが下書きし、人が確かめて公開する</small></p>
+          </div>
+          <div class="work-body">
+            <div class="work-meta"><span class="chip chip-area">不動産・賃貸情報メディア</span></div>
+            <h3 class="h3">賃貸情報メディア「すまいりゅーの賃貸攻略」と独自CMS</h3>
+            <p>不動産会社の賃貸情報メディアを、記事を管理する仕組みごと開発しました。AIが記事の下書きを作り、担当者が確認して公開する半自動の運用です。WordPressのように使えるブロック編集、Q&amp;A・要点・目次のブロック、構造化データの自動出力まで備えています。</p>
+            <ul class="work-tags"><li>Webメディア</li><li>独自CMS</li><li>AI下書き</li><li>構造化データ</li></ul>
+            <a class="ext" href="https://sumairyu-chintai.com/" target="_blank" rel="noopener">サイトを見る ↗</a>
+          </div>
+        </article>
+        <article class="work reveal" data-cat="aio">
+          <div class="work-cover tone-cream">
+            <p class="work-en"><span>E-Commerce</span></p>
+            <p class="work-kpi"><b><span data-count>30</span></b><span class="unit">問</span><small>Google の AI 検索で診断した質問の数</small></p>
+          </div>
+          <div class="work-body">
+            <div class="work-meta"><span class="chip chip-area">アパレル・下着EC</span></div>
+            <h3 class="h3">下着ECブランドのAI検索対策とサイト改善</h3>
+            <p>AI検索での見え方を診断し、Shopify 向けの実装仕様を作成。商品データ、FAQ12問、ブランド紹介と配送ポリシーの原稿、テーマ部品まで、そのまま反映できる形で納品しました。売上改善とサイト改善の提案もあわせて行っています。</p>
+            <ul class="work-tags"><li>AIO戦略</li><li>Shopify</li><li>商品データ・FAQ</li><li>売上改善の提案</li></ul>
+          </div>
+        </article>
+        <article class="work reveal" data-cat="aio">
+          <div class="work-cover on-navy">
+            <p class="work-en"><span>AI Search Audit</span></p>
+            <p class="work-kpi"><b><span data-count>4</span></b><span class="unit">サイト</span><small>まとめて診断した公式サイト</small></p>
+          </div>
+          <div class="work-body">
+            <div class="work-meta"><span class="chip chip-area">不動産・投資用マンション</span></div>
+            <h3 class="h3">不動産会社4サイトのAI検索診断</h3>
+            <p>4つの公式サイトを対象に、5つの生成AIへ150件の質問をして実測。社名で聞かれればほぼ確実に名前が出る一方、一般的な質問ではほとんど出ないことを数字で示し、改善のロードマップを提案しました。</p>
+            <ul class="work-tags"><li>150件の実測</li><li>技術診断</li><li>ロードマップ</li></ul>
+            <p class="result">伸ばす余地のある質問の種類を特定</p>
+          </div>
+        </article>
+        <article class="work reveal" data-cat="aio">
+          <div class="work-cover tone-hot">
+            <p class="work-en"><span>News Media</span></p>
+            <p class="work-kpi"><b><span data-count>81</span></b><span class="unit">%</span><small>媒体名で聞かれたときに公式記事が引用された割合</small></p>
+          </div>
+          <div class="work-body">
+            <div class="work-meta"><span class="chip chip-area">スポーツ・ニュースメディア</span></div>
+            <h3 class="h3">サッカーニュースメディアのAI検索診断</h3>
+            <p>生成AIに90件の質問をして実測。媒体名で聞かれれば公式記事がしっかり引用される一方、一般的な質問ではほとんど名前が出ないことが分かり、取りこぼしている質問の種類を特定しました。</p>
+            <ul class="work-tags"><li>90件の実測</li><li>引用元の分析</li></ul>
+          </div>
         </article>
         <article class="work reveal" data-cat="ai partner">
-          <div class="work-meta"><span class="chip chip-area">伴走支援</span><time datetime="2026">2026</time></div>
-          <h3 class="h3">工業系企業のAI業務改善伴走</h3>
-          <p>現場へのヒアリングで31の課題を洗い出し、効果と手間で優先順位を付けて整理。書類の照合作業から、AIを使った照合ツールの試作に着手しました。</p>
-          <p class="result">月次の伴走支援として継続中</p>
+          <div class="work-cover tone-cream">
+            <p class="work-en"><span>AI Adoption</span></p>
+            <p class="work-kpi"><b><span data-count>31</span></b><span class="unit">件</span><small>現場のヒアリングで洗い出した課題</small></p>
+          </div>
+          <div class="work-body">
+            <div class="work-meta"><span class="chip chip-area">工業系企業</span></div>
+            <h3 class="h3">工業系企業のAI業務改善伴走</h3>
+            <p>現場へのヒアリングで課題を洗い出し、効果と手間で優先順位を付けて整理。書類の照合作業から、AIを使った照合ツールの試作に着手しました。</p>
+            <ul class="work-tags"><li>ヒアリング</li><li>課題整理</li><li>ツール試作</li></ul>
+            <p class="result">月次の伴走支援として継続中</p>
+          </div>
         </article>
         <article class="work reveal" data-cat="ai partner">
-          <div class="work-meta"><span class="chip chip-area">業務自動化</span><time datetime="2026">2026</time></div>
-          <h3 class="h3">不動産・民泊運営会社の物件精査システム</h3>
-          <p>物件資料のPDFからAIで21項目を抜き出し、精査の手間を減らす仕組みを構築。担当者と一緒に簡易ツールを作るAI業務改善ワークショップも行いました。</p>
-          <p class="result">実際の資料で全項目を正しく抽出</p>
+          <div class="work-cover on-navy">
+            <p class="work-en"><span>Automation</span></p>
+            <p class="work-kpi"><b><span data-count>21</span></b><span class="unit">項目</span><small>物件資料のPDFからAIで抜き出す項目</small></p>
+          </div>
+          <div class="work-body">
+            <div class="work-meta"><span class="chip chip-area">不動産・民泊運営</span></div>
+            <h3 class="h3">不動産・民泊運営会社の物件精査システム</h3>
+            <p>物件資料のPDFからAIで必要な項目を抜き出し、精査の手間を減らす仕組みを構築。担当者と一緒に簡易ツールを作るAI業務改善ワークショップも行いました。</p>
+            <ul class="work-tags"><li>PDF読み取り</li><li>業務自動化</li><li>ワークショップ</li></ul>
+            <p class="result">実際の資料で全項目を正しく抽出</p>
+          </div>
         </article>
         <article class="work reveal" data-cat="line dev">
-          <div class="work-meta"><span class="chip chip-area">SNS運用</span></div>
-          <h3 class="h3">SNS自動化サービス「PostonAI」</h3>
-          <p>情報収集、テーマ選定、文章作成、画像準備、投稿準備までの流れをAIで効率化。複数のSNSへの予約投稿をひとつの管理画面にまとめました。</p>
-          <p class="result">SNS運用にかかる作業時間を短縮</p>
+          <div class="work-cover tone-hot">
+            <p class="work-en"><span>Product</span></p>
+            <p class="work-kpi"><b><span data-count>5</span></b><span class="unit">SNS</span><small>ひとつの管理画面から予約投稿</small></p>
+          </div>
+          <div class="work-body">
+            <div class="work-meta"><span class="chip chip-area">自社プロダクト</span></div>
+            <h3 class="h3">SNS自動化サービス「PostonAI」</h3>
+            <p>情報収集、テーマ選定、文章作成、画像準備、投稿までの流れをAIで効率化。複数のSNSへの予約投稿をひとつの管理画面にまとめました。</p>
+            <ul class="work-tags"><li>SNS運用</li><li>生成AI</li><li>予約投稿</li></ul>
+            <p class="result">SNS運用にかかる作業時間を短縮</p>
+            <a class="ext" href="products.html#postonai">プロダクトを見る →</a>
+          </div>
         </article>
         <article class="work reveal" data-cat="line ai">
-          <div class="work-meta"><span class="chip chip-area">LINE・AI</span></div>
-          <h3 class="h3">動物病院の公式LINE AIチャットボット</h3>
-          <p>問い合わせ対応、予約案内、緊急時対応、スタッフへの引き継ぎまでの会話を設計。新着情報をAIで要約し、チャットボットへ反映する仕組みも構築しました。</p>
-          <p class="result">人の対応が必要な件数を削減</p>
+          <div class="work-cover tone-cream">
+            <p class="work-en"><span>LINE × AI</span></p>
+            <p class="work-kpi is-word"><b>LINE AI</b><small>問い合わせ・予約・緊急時の会話を設計</small></p>
+          </div>
+          <div class="work-body">
+            <div class="work-meta"><span class="chip chip-area">医療・動物病院</span></div>
+            <h3 class="h3">動物病院の公式LINE AIチャットボット</h3>
+            <p>問い合わせ対応、予約案内、緊急時対応、スタッフへの引き継ぎまでの会話を設計。新着情報をAIで要約し、チャットボットへ反映する仕組みも構築しました。</p>
+            <ul class="work-tags"><li>LINE公式アカウント</li><li>会話設計</li><li>AI要約</li></ul>
+            <p class="result">人の対応が必要な件数を削減</p>
+          </div>
         </article>
         <article class="work reveal" data-cat="ai">
-          <div class="work-meta"><span class="chip chip-area">業務自動化</span></div>
-          <h3 class="h3">飲食店の予約管理</h3>
-          <p>複数の予約媒体から届くメールをAIで読み取り、予約日時・人数・氏名・コースを統一形式で管理できるようにしました。</p>
+          <div class="work-cover on-navy">
+            <p class="work-en"><span>Automation</span></p>
+            <p class="work-kpi is-word"><b>Mail → AI</b><small>複数媒体の予約メールを、ひとつの形式に</small></p>
+          </div>
+          <div class="work-body">
+            <div class="work-meta"><span class="chip chip-area">飲食店</span></div>
+            <h3 class="h3">飲食店の予約管理</h3>
+            <p>複数の予約媒体から届くメールをAIで読み取り、予約日時・人数・氏名・コースを統一形式で管理できるようにしました。</p>
+            <ul class="work-tags"><li>メール読み取り</li><li>業務自動化</li></ul>
+          </div>
         </article>
         <article class="work reveal" data-cat="ai">
-          <div class="work-meta"><span class="chip chip-area">動画・アバター</span></div>
-          <h3 class="h3">FP会社のAIアバター動画</h3>
-          <p>音声生成とAIアバターを組み合わせ、本人が毎回撮影しなくても動画を制作できる運用を構築しました。</p>
+          <div class="work-cover tone-hot">
+            <p class="work-en"><span>Video × AI</span></p>
+            <p class="work-kpi is-word"><b>AI Avatar</b><small>本人が撮影しなくても動画をつくれる</small></p>
+          </div>
+          <div class="work-body">
+            <div class="work-meta"><span class="chip chip-area">金融・FP会社</span></div>
+            <h3 class="h3">FP会社のAIアバター動画</h3>
+            <p>音声生成とAIアバターを組み合わせ、本人が毎回撮影しなくても動画を制作できる運用を構築しました。</p>
+            <ul class="work-tags"><li>音声生成</li><li>AIアバター</li><li>動画制作</li></ul>
+          </div>
         </article>
       </div>
 

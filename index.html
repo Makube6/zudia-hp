@@ -8,8 +8,7 @@
 <!--
   差し替え箇所（公開前に必ず確認。本文中は「要確認」チップで示している）
   - 代表者の肩書・所在地・設立・資本金は定款（2026-09-19 作成）から転記済み。設立は登記完了日に合わせて要確認
-  - 実績の掲載可否（#works と products.html#works。ポートフォリオ 2026-08 版＋ZUDIA名義の案件から転記）
-  - AIO の案件は TIAM 名義のものが多い。ZUDIA の実績として載せるのは ZUDIA 名義と確認できたものだけ
+  - 実績（#works と products.html#works）は掲載OK（2026-10-10 植田）。TIAM 名義の AIO 案件も業種名だけで掲載可、すまいりゅーは名前・URLとも掲載可。ナイトワーク系・成人向けの案件は載せない
   - 公開URL: https://zudia.jp/。og:image / canonical は絶対URL
   - 色・書体は css/style.css 先頭の tokens ブロックのみ。動きは js/main.js（本文は必ず HTML に書く）
 -->
@@ -305,28 +304,68 @@
         <div>
           <p class="eyebrow">Works</p>
           <h2 class="h2">主な取り組み。</h2>
-          <p>実際の業務を題材に、担当者と一緒に作ったものです。<span class="chip">要確認：掲載可否・表記</span></p>
+          <p>実際の業務を題材に、担当者と一緒に作ったものです。</p>
         </div>
         <a class="link-arrow" href="products.html#works">実績をすべて見る <span class="arrow">→</span></a>
       </div>
       <div class="works" data-stagger>
-        <article class="work reveal">
-          <div class="work-meta"><span class="chip chip-area">AI検索対策・サイト改善</span></div>
-          <h3 class="h3">大衆居酒屋の集客立て直しとAI検索対策</h3>
-          <p>売上・予約・口コミの数字を分析し、公式サイトとグルメ媒体・Googleビジネスプロフィールの情報を統一。5つの生成AIで150件を実測し、FAQと構造化データを整備しました。</p>
-          <p class="result">公式サイトのリニューアルを進行中</p>
+        <article class="work is-feature reveal" data-cat="aio">
+          <div class="work-cover on-navy">
+            <p class="work-en"><span>AI Search Optimization</span><span>Case Study</span></p>
+            <p class="work-kpi is-word"><b>AI Overviews が<br>公式サイトを引用</b><small>Google の AI による概要で、公式の回答ページが引用されるようになりました。ChatGPT の一般的な質問でも、初めて推薦を獲得しています。</small></p>
+            <div class="work-stats">
+              <div><b><span data-count>9</span><span class="unit">%</span></b><span>Google に登録されたページの増加（207→225）</span></div>
+              <div><b><span data-count>15</span><span class="unit">%</span></b><span>重複で評価されないページの減少（240→204）</span></div>
+              <div><b><span data-count>416</span><span class="unit">URL</span></b><span>サイトマップを自動で生成</span></div>
+            </div>
+          </div>
+          <div class="work-body">
+            <div class="work-meta"><span class="chip chip-area">金融・FP相談 Q&amp;Aサイト</span><time datetime="2026">2026</time></div>
+            <h3 class="h3">FP相談Q&amp;AサイトのAI検索対策</h3>
+            <p>5つの生成AIで、サイトが名前を挙げられるか・引用されるかを実測。そのうえで、AIと検索エンジンに正しく読まれるための土台を実装しました。重複ページの整理、記事ごとのタイトルと説明文、Q&amp;Aと運営会社の構造化データ、サイトマップの自動生成、llms.txt、検証環境が検索に出ないようにする設定までを行っています。</p>
+            <ul class="work-tags"><li>AIO診断</li><li>技術基盤の実装</li><li>構造化データ</li><li>効果測定</li></ul>
+            <p class="result">施策から1か月で、AI検索からの引用が始まる</p>
+            <p class="work-note">数値は施策前後の Google Search Console（2026年9月→10月）</p>
+          </div>
         </article>
-        <article class="work reveal">
-          <div class="work-meta"><span class="chip chip-area">LINE・AI</span></div>
-          <h3 class="h3">動物病院の公式LINE AIチャットボット</h3>
-          <p>問い合わせ対応、予約案内、緊急時対応、スタッフへの引き継ぎまでの会話を設計。新着情報をAIで要約し、チャットボットへ反映する仕組みも構築しました。</p>
-          <p class="result">人の対応が必要な件数を削減</p>
+        <article class="work reveal" data-cat="aio">
+          <div class="work-cover tone-hot">
+            <p class="work-en"><span>AI Search × Local</span></p>
+            <p class="work-kpi"><b><span data-count>150</span></b><span class="unit">件</span><small>5つの生成AIで実測した質問の数</small></p>
+          </div>
+          <div class="work-body">
+            <div class="work-meta"><span class="chip chip-area">飲食・大衆居酒屋</span></div>
+            <h3 class="h3">大衆居酒屋の集客立て直しとAI検索対策</h3>
+            <p>売上・予約・口コミの数字を分析し、公式サイトとグルメ媒体・Googleビジネスプロフィールで食い違っていた情報を統一。AIでの見え方を実測したうえで、FAQ19問と構造化データ、llms.txt を整備しました。</p>
+            <ul class="work-tags"><li>数字分析</li><li>媒体情報の統一</li><li>FAQ・構造化データ</li></ul>
+            <p class="result">公式サイトのリニューアルを進行中</p>
+          </div>
         </article>
-        <article class="work reveal">
-          <div class="work-meta"><span class="chip chip-area">業務自動化</span></div>
-          <h3 class="h3">不動産・民泊運営会社の物件精査システム</h3>
-          <p>物件資料のPDFからAIで21項目を抜き出し、精査の手間を減らす仕組みを構築。担当者と一緒に簡易ツールを作るワークショップも行いました。</p>
-          <p class="result">実際の資料で全項目を正しく抽出</p>
+        <article class="work reveal" data-cat="dev aio">
+          <div class="work-cover on-navy">
+            <p class="work-en"><span>Media & CMS</span></p>
+            <p class="work-kpi is-word"><b>AI × 人</b><small>AIが下書きし、人が確かめて公開する</small></p>
+          </div>
+          <div class="work-body">
+            <div class="work-meta"><span class="chip chip-area">不動産・賃貸情報メディア</span></div>
+            <h3 class="h3">賃貸情報メディア「すまいりゅーの賃貸攻略」と独自CMS</h3>
+            <p>不動産会社の賃貸情報メディアを、記事を管理する仕組みごと開発しました。AIが記事の下書きを作り、担当者が確認して公開する半自動の運用です。WordPressのように使えるブロック編集、Q&amp;A・要点・目次のブロック、構造化データの自動出力まで備えています。</p>
+            <ul class="work-tags"><li>Webメディア</li><li>独自CMS</li><li>AI下書き</li><li>構造化データ</li></ul>
+            <a class="ext" href="https://sumairyu-chintai.com/" target="_blank" rel="noopener">サイトを見る ↗</a>
+          </div>
+        </article>
+        <article class="work reveal" data-cat="ai partner">
+          <div class="work-cover on-navy">
+            <p class="work-en"><span>Automation</span></p>
+            <p class="work-kpi"><b><span data-count>21</span></b><span class="unit">項目</span><small>物件資料のPDFからAIで抜き出す項目</small></p>
+          </div>
+          <div class="work-body">
+            <div class="work-meta"><span class="chip chip-area">不動産・民泊運営</span></div>
+            <h3 class="h3">不動産・民泊運営会社の物件精査システム</h3>
+            <p>物件資料のPDFからAIで必要な項目を抜き出し、精査の手間を減らす仕組みを構築。担当者と一緒に簡易ツールを作るAI業務改善ワークショップも行いました。</p>
+            <ul class="work-tags"><li>PDF読み取り</li><li>業務自動化</li><li>ワークショップ</li></ul>
+            <p class="result">実際の資料で全項目を正しく抽出</p>
+          </div>
         </article>
       </div>
     </div>
@@ -344,16 +383,6 @@
           <p>現場、営業、システム。異なる仕事を経験してきました。空調設備工事の現場監督として工程と人を動かし、不動産営業として相手の状況を聞いて意思決定を支え、システム開発会社でWebサービスやLINE、業務システムの企画・開発・運営に携わってきました。</p>
           <p>その中で身についたのは、経営者や現場の話を聞き、課題を整理し、AIやシステムで改善方法を考え、開発側に伝え、実際に使えるところまで進める、という一連の動き方です。「何を作るか」より先に、「何を解決するか」を考えます。</p>
           <p>AIを使うことが目的ではありません。あなたの仕事が楽になり、事業が前へ進むこと。それだけを見て、一緒に動きます。</p>
-          <div class="message-sign">
-            <span class="role">株式会社ZUDIA 代表取締役</span>
-            <span class="name">植田 昌基</span>
-          </div>
-          <ul class="message-career" aria-label="経歴">
-            <li><b>設備会社</b><span>空調設備工事の現場監督。工程・安全・品質管理、協力会社との調整</span></li>
-            <li><b>フリーランス</b><span>自ら仕事を取り、顧客対応から実務までを担当</span></li>
-            <li><b>不動産営業</b><span>ファミリー向けマンション販売。8期連続で営業成績TOP3</span></li>
-            <li><b>システム開発会社</b><span>Webサービス・アプリ・LINE・業務システムの企画・開発・運営。新規事業とAI業務改善を担当</span></li>
-          </ul>
         </div>
       </div>
     </div>

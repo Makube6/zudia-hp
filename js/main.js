@@ -40,6 +40,28 @@
     targets.forEach(function (el) { el.classList.add('is-in'); });
   }
 
+  // 数字のカウントアップ：HTML には最終値を書いておき（AIや検索エンジンにはそのまま読める）、表示時だけ 0 から数える
+  var counters = document.querySelectorAll('[data-count]');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (counters.length && 'IntersectionObserver' in window && !reduce) {
+    var countUp = function (el) {
+      var end = parseFloat(el.textContent.replace(/,/g, ''));
+      if (isNaN(end)) return;
+      var dec = (el.textContent.split('.')[1] || '').length, t0 = null, dur = 1400;
+      var step = function (t) {
+        if (!t0) t0 = t;
+        var k = Math.min((t - t0) / dur, 1), e = 1 - Math.pow(1 - k, 3);
+        el.textContent = (end * e).toFixed(dec);
+        if (k < 1) requestAnimationFrame(step); else el.textContent = end.toFixed(dec);
+      };
+      requestAnimationFrame(step);
+    };
+    var cio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { countUp(e.target); cio.unobserve(e.target); } });
+    }, { threshold: 0.6 });
+    counters.forEach(function (el) { cio.observe(el); });
+  }
+
   // 実績の絞り込み：ボタンの data-filter と各 .work の data-cat（空白区切り）を照合する
   var filters = document.querySelector('.filters');
   if (filters) {
