@@ -340,6 +340,11 @@ li { list-style: none; }
 .product-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
 .product-actions .btn { padding: 11px 20px; font-size: 14px; }
 .products-more { margin-top: 28px; }
+/* 注力プロダクト：1行まるごと、Navy 地（.on-navy でトークンを切り替える） */
+.product.is-wide { grid-column: 1 / -1; color: var(--ink); background: var(--ground); border-color: var(--ground); grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px clamp(28px, 4vw, 56px); }
+.product.is-wide > .product-intro { display: grid; gap: 16px; align-content: start; }
+.product.is-wide::after { opacity: .3; }
+@media (max-width: 860px) { .product.is-wide { grid-template-columns: 1fr; } }
 @media (max-width: 860px) { .products { grid-template-columns: 1fr; } }
 
 /* ---------- 進め方（Navy帯、5ステップ＝実際の順序） ---------- */
