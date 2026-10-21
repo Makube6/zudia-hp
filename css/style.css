@@ -499,3 +499,13 @@ li { list-style: none; }
   .js .reveal, .js .hero h1 .line { opacity: 1; transform: none; }
   .step::after { width: 100%; }
 }
+
+/* ---------- プライバシーポリシー ---------- */
+.policy { max-width: 44em; color: var(--ink-soft); font-family: var(--font-sans); overflow-wrap: anywhere; }
+.policy h2 { margin-top: 48px; margin-bottom: 16px; color: var(--ink); font-family: var(--font-heading); font-size: 20px; }
+.policy p + p, .policy ul { margin-top: 16px; }
+.policy ul { padding-left: 1.5em; }
+.policy li { list-style: disc; }
+.policy li + li { margin-top: 8px; }
+.policy a { color: var(--accent); text-decoration: underline; text-underline-offset: .2em; }
+.policy .policy-date { margin-top: 48px; }
