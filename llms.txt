@@ -12,8 +12,8 @@
 - [新規事業伴走](https://zudia.jp/#service): 企画、営業、PoC、マーケティング、立ち上げ。
 
 ## プロダクト
-- [ZUDIA AI](https://zudia.jp/products.html#zudia-ai): やりたいことを話すだけでAIが業務システムを作るサービス。現場監督役のAIが作業を分けて確かめ、公開・課金などは人の承認で進む。ZUDIAが伴走。
-- [PostonAI](https://zudia.jp/products.html#postonai): SNS運用をAIで自動化するWebシステム。note・X・Instagram・Facebook・Threads への予約投稿、複数の生成AIによる文章生成、テンプレート、画像・動画ライブラリ。
+- [ZUDIA AI](https://zudia.jp/ai/): やりたいことを話すだけでAIが業務システムを作るサービス。現場監督役のAIが作業を分けて確かめ、公開・課金などは人の承認で進む。ZUDIAが伴走。
+- [PostonAI](https://zudia.jp/poston/): SNS運用をAIで自動化するWebシステム。note・X・Instagram・Facebook・Threads への予約投稿、複数の生成AIによる文章生成、テンプレート、画像・動画ライブラリ。
 - [ウマぃ飯](https://umaimeshi.com/): 競馬場のグルメを入口にしたグルメサイト。JRA公式を一次情報に実在店舗を紹介。
 
 ## 実績

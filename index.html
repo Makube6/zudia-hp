@@ -67,22 +67,24 @@
       </span>
     </a>
     <nav class="nav" aria-label="サイト内">
-      <a href="#about">私たちについて</a>
-      <a href="#service">サービス</a>
+      <a href="#about">企業理念</a>
+      <a href="#service">事業内容</a>
       <a href="products.html">プロダクト・実績</a>
-      <a href="#approach">進め方</a>
+      <a href="#message">代表メッセージ</a>
       <a href="#company">会社概要</a>
-      <a class="btn btn-primary" href="#contact">相談する</a>
+      <a class="btn btn-primary" href="#contact">お問い合わせ</a>
     </nav>
     <details class="menu">
       <summary>MENU</summary>
       <div class="menu-list">
-        <a href="#about">私たちについて</a>
-        <a href="#service">サービス</a>
+        <a href="#news">お知らせ</a>
+        <a href="#about">企業理念</a>
+        <a href="#model">支援のかたち</a>
+        <a href="#service">事業内容</a>
         <a href="products.html">プロダクト・実績</a>
-        <a href="#approach">進め方</a>
+        <a href="#message">代表メッセージ</a>
         <a href="#company">会社概要</a>
-        <a href="#contact">相談する</a>
+        <a href="#contact">お問い合わせ</a>
       </div>
     </details>
   </div>
@@ -90,137 +92,203 @@
 
 <main id="top">
 
-  <!-- ヒーロー：ブランドの芯をそのまま置く -->
-  <section class="hero">
+  <!-- ヒーロー：何の会社かを一文で言い切る（Navy 地） -->
+  <section class="corp-hero on-navy">
     <div class="wrap">
       <div>
-        <p class="eyebrow">Toward You</p>
-        <h1><span class="line" style="--d:.05s">もっと、</span><span class="line" style="--d:.2s"><span class="grad-text">あなた</span>へ。</span></h1>
-        <p class="hero-sub lead reveal" style="--d:.35s">株式会社ZUDIAは、距離を取って助言する会社ではありません。現場に入り、考え、つくり、動かし、結果まで一緒に追いかけます。</p>
-        <div class="hero-actions reveal" style="--d:.45s">
-          <a class="btn btn-primary" href="#contact">相談してみる <span class="arrow">→</span></a>
-          <a class="btn btn-ghost" href="#service">サービスを見る</a>
+        <p class="eyebrow">Toward You <span class="label-ja">もっと、あなたへ。</span></p>
+        <h1>現場に入り、<br>事業を前へ進める。</h1>
+        <p class="lead">株式会社ZUDIAは、AI導入、AI検索対策、Web・システム開発、新規事業の立ち上げを、お客様の現場に入り込んで実装と定着まで担う事業推進パートナーです。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">お問い合わせ <span class="arrow">→</span></a>
+          <a class="btn btn-ghost" href="#service">事業内容を見る</a>
         </div>
-        <p class="hero-en reveal" style="--d:.55s">AI・AIO・Web・System・New Business</p>
       </div>
-      <div class="hero-visual" aria-hidden="true">
-        <span class="glow"></span>
-        <span class="orbit"></span>
-        <img src="assets/zudia-symbol.png" alt="" width="412" height="319">
+      <div class="hero-mark">
+        <img src="assets/zudia-symbol.png" alt="ZUDIAのシンボル。前へ伸びる一本の道を表したZ" width="412" height="319">
       </div>
     </div>
   </section>
 
-  <!-- 私たちについて -->
+  <!-- お知らせ。新しいものを上に足す -->
+  <section class="section news-sec" id="news" aria-labelledby="news-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">News</p>
+        <h2 class="h3" id="news-title">お知らせ</h2>
+      </div>
+      <ul class="news">
+        <li><time datetime="2026-10">2026.10</time><span class="cat">プロダクト</span><a href="products.html#zudia-ai">話すだけで業務システムをつくる「ZUDIA AI」の相談受付を開始しました。</a></li>
+        <li><time datetime="2026-10">2026.10</time><span class="cat">サービス</span><a href="#aio">AI検索対策（AIO・LLMO診断）の提供を開始しました。</a></li>
+        <li><time datetime="2026-09">2026.09</time><span class="cat">会社情報</span><a href="#company">株式会社ZUDIAを設立しました。</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 企業理念（アンカーは他ページからのリンクのため #about のまま） -->
   <section class="section" id="about">
     <div class="wrap">
-      <div class="about-grid">
-        <div class="reveal">
-          <p class="eyebrow">About</p>
-          <div class="section-head">
-            <h2 class="h2">AIの会社ではなく、<br>事業を前へ進める会社です。</h2>
-          </div>
-          <div class="about-body">
-            <p>ZUDIA（ズーディア）という名前は、ドイツ語の "zu dir"、「あなたへ」から来ています。私たちの仕事は、人の想いやアイデアや可能性を、実際の事業やプロダクトとして相手に届けることです。</p>
-            <p>手段はAIでも、Webでも、システムでも構いません。大切にしているのは、<strong>「誰に、何を届けるか」</strong>。何を作るかより先に、何を解決するかを考えます。</p>
-            <ul class="stance" aria-label="ZUDIAの姿勢">
-              <li><b>熱量はある。</b><span>でも、仕事は冷静に進めます。</span></li>
-              <li><b>人に近い。</b><span>でも、成果には厳しくあります。</span></li>
-              <li><b>アイデアで終わらせない。</b><span>実装して、使えるところまで届けます。</span></li>
-            </ul>
+      <div class="section-head reveal">
+        <p class="eyebrow">Philosophy</p>
+        <h2 class="h2">企業理念</h2>
+      </div>
+      <div class="creed reveal">
+        <div class="creed-row">
+          <p class="creed-label"><span class="en">Mission</span><span class="ja">使命</span></p>
+          <div>
+            <p class="creed-statement">人の想いとアイデアを、動く事業として届ける。</p>
+            <p class="creed-sub">私たちはAIの会社ではなく、事業を前へ進める会社です。手段はAIでも、Webでも、システムでも構いません。大切にしているのは「誰に、何を届けるか」。何を作るかより先に、何を解決するかを考えます。</p>
           </div>
         </div>
-        <div class="reveal" style="--d:.15s">
-          <ul class="philosophy" aria-label="ZUDIAの考え">
+        <div class="creed-row">
+          <p class="creed-label"><span class="en">Philosophy</span><span class="ja">考え方</span></p>
+          <ul class="creed-lines">
             <li>アイデアを、事業へ。</li>
             <li>技術を、人へ。</li>
             <li>可能性を、もっとあなたへ。</li>
-            <li class="origin">社名の原点にあるのは「俺から君へ」という言葉。誰かひとりに向けて、まっすぐ届ける。その姿勢を、会社の名前にしました。</li>
+          </ul>
+        </div>
+        <div class="creed-row">
+          <p class="creed-label"><span class="en">Values</span><span class="ja">行動指針</span></p>
+          <ul class="values">
+            <li><b>熱量と、冷静さ</b><span>熱量をもって取り組み、仕事は冷静に進めます。</span></li>
+            <li><b>人に近く、成果に厳しく</b><span>お客様のすぐ隣で動き、成果には妥協しません。</span></li>
+            <li><b>実装まで届ける</b><span>アイデアで終わらせず、現場で使えるところまで仕上げます。</span></li>
           </ul>
         </div>
       </div>
+      <p class="creed-origin reveal">社名の ZUDIA（ズーディア）は、ドイツ語の "zu dir"、「あなたへ」に由来します。原点にあるのは「俺から君へ」という言葉。誰かひとりに向けて、まっすぐ届ける。その姿勢を、会社の名前にしました。</p>
+    </div>
+  </section>
+
+  <!-- 支援のかたち：FDE型を、よくある2つの型と比べて説明する -->
+  <section class="section tint" id="model">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Our Model</p>
+        <h2 class="h2">助言で終わらず、<br>現場に入って実装する。</h2>
+        <p>米国のテクノロジー企業で広がる FDE（Forward Deployed Engineer）は、エンジニアが顧客の現場に入り込み、社員と同じチームで課題の解決と実装を進める働き方です。ZUDIAはこの考え方で、中小企業やスタートアップの事業を支援します。</p>
+      </div>
+      <div class="compare-wrap reveal">
+        <table class="compare">
+          <caption class="sr-only">支援の型の比較</caption>
+          <thead>
+            <tr>
+              <th scope="col"><span class="sr-only">比べる項目</span></th>
+              <th scope="col">受託開発型</th>
+              <th scope="col">コンサルティング型</th>
+              <th scope="col" class="is-us">ZUDIA<small>現場入り込み型（FDE型）</small></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">関わり方</th>
+              <td>決まった要件を受けて、開発して納品する</td>
+              <td>外から分析し、方針を提言する</td>
+              <td class="is-us">現場に入り、同じチームで考え、つくり、動かす</td>
+            </tr>
+            <tr>
+              <th scope="row">主な成果物</th>
+              <td>システム</td>
+              <td>報告書・計画書</td>
+              <td class="is-us">現場で動く仕組みと、その成果</td>
+            </tr>
+            <tr>
+              <th scope="row">終わった後に残るもの</th>
+              <td>運用と改善は発注側に任される</td>
+              <td>実行は社内に任される</td>
+              <td class="is-us">社内の担当者が自分で改善を続けられる体制</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="model-note reveal">経営者の話を、現場で使える形に。現場の困りごとを、開発側に伝わる形に。ZUDIAは、経営と現場と開発のあいだに立つ役割を引き受けます。</p>
     </div>
   </section>
 
   <!-- サービス：何をするか／なぜ必要か を対で書く -->
-  <section class="section tint" id="service">
+  <section class="section" id="service">
     <div class="wrap">
       <div class="section-head reveal">
-        <p class="eyebrow">Service</p>
-        <h2 class="h2">事業を前へ進める、5つの支援。</h2>
+        <p class="eyebrow">Business</p>
+        <h2 class="h2">事業内容</h2>
         <p>事業領域は限定しません。どの支援も、現場の話を聞くところから始めて、使えるところまで一緒に進めます。</p>
       </div>
-      <div class="services" data-stagger>
-        <article class="service reveal is-wide is-feature on-navy" id="aio">
-          <div class="service-top"><span class="no"></span><span class="new">NEW</span></div>
-          <p class="en">AI Search Optimization</p>
-          <h3 class="h3">AI検索対策（AIO・LLMO診断）</h3>
+      <div class="svc-list">
+        <article class="svc-row reveal" id="aio">
+          <div class="svc-name">
+            <p class="en">AI Search Optimization</p>
+            <h3 class="h3">AI検索対策（AIO・LLMO診断）</h3>
+            <ul class="tags" aria-label="成果物">
+              <li>5エンジン×30問の実測</li><li>技術診断</li><li>改善ロードマップ</li><li>構造化データ・llms.txt</li><li>施策後の再計測</li>
+            </ul>
+          </div>
           <dl>
             <dt>何をするか</dt>
             <dd>ChatGPT・Google AI Overviews・Gemini・Perplexity・Claude の5つの生成AIに、お客様が実際にしそうな質問を投げ、御社が名前を挙げられるか、公式サイトが引用されるかを実測します。サイトの技術診断と合わせて、改善の優先順位を決め、実装と再計測まで行います。</dd>
             <dt>なぜ必要か</dt>
-            <dd>調べものの入口が、検索結果からAIの回答に移りつつあります。AIの回答に名前が出なければ、比較の候補にすら入れません。推測ではなく、実測で現状を知ることから始めます。</dd>
+            <dd>調べものの入口が、検索結果からAIの回答に移りつつあります。AIの回答に名前が出なければ、比較の候補にすら入れません。推測ではなく、実測で現状を知ることから始めます。重視するのは「名前が出たか」より「公式サイトが引用されたか」です。</dd>
           </dl>
-          <ul class="tags" aria-label="成果物">
-            <li>5エンジン×30問の実測</li><li>技術診断</li><li>改善ロードマップ</li><li>構造化データ・llms.txt</li><li>施策後の再計測</li>
-          </ul>
-          <p class="feature-note">重視するのは「名前が出たか」より「公式サイトが引用されたか」。良い点も、そのまま報告します。</p>
         </article>
-        <article class="service reveal is-wide" id="site">
-          <div class="service-top"><span class="no"></span><span class="new">NEW</span></div>
-          <p class="en">Website Growth</p>
-          <h3 class="h3">サイト改善・Web制作</h3>
+        <article class="svc-row reveal" id="site">
+          <div class="svc-name">
+            <p class="en">Website Growth</p>
+            <h3 class="h3">サイト改善・Web制作</h3>
+            <ul class="tags" aria-label="対応領域">
+              <li>現状分析</li><li>情報の統一</li><li>FAQ・構造化データ</li><li>リニューアル</li><li>EC改善</li>
+            </ul>
+          </div>
           <dl>
             <dt>何をするか</dt>
             <dd>公式サイトと、Googleビジネスプロフィールや予約・ポータル媒体の情報を揃え、FAQ・構造化データ・導線を直します。必要ならリニューアルや新規制作、EC の改善まで手がけます。</dd>
             <dt>なぜ必要か</dt>
             <dd>営業時間や料金が媒体ごとに食い違うと、人もAIも迷います。作り直す前に、売上・予約・アクセスの数字から、直すべき場所を決めます。</dd>
           </dl>
-          <ul class="tags" aria-label="対応領域">
-            <li>現状分析</li><li>情報の統一</li><li>FAQ・構造化データ</li><li>リニューアル</li><li>EC改善</li>
-          </ul>
         </article>
-        <article class="service reveal">
-          <div class="service-top"><span class="no"></span></div>
-          <p class="en">AI Adoption</p>
-          <h3 class="h3">AI導入支援</h3>
+        <article class="svc-row reveal" id="ai-adoption">
+          <div class="svc-name">
+            <p class="en">AI Adoption</p>
+            <h3 class="h3">AI導入支援</h3>
+            <ul class="tags" aria-label="対応領域">
+              <li>文章・情報整理</li><li>業務ツール開発</li><li>外部サービス連携</li><li>画像・音声・動画</li>
+            </ul>
+          </div>
           <dl>
             <dt>何をするか</dt>
             <dd>業務のヒアリングから、生成AIの導入、業務ツールの作成、自動化、社内への定着までを行います。</dd>
             <dt>なぜ必要か</dt>
             <dd>AIを使うことが目的ではなく、仕事を楽にすることが目的だからです。導入して終わりでは、現場は変わりません。</dd>
           </dl>
-          <ul class="tags" aria-label="対応領域">
-            <li>文章・情報整理</li><li>業務ツール開発</li><li>外部サービス連携</li><li>画像・音声・動画</li>
-          </ul>
         </article>
-        <article class="service reveal">
-          <div class="service-top"><span class="no"></span></div>
-          <p class="en">Web &amp; App</p>
-          <h3 class="h3">Web・アプリ開発</h3>
+        <article class="svc-row reveal" id="development">
+          <div class="svc-name">
+            <p class="en">Web &amp; App</p>
+            <h3 class="h3">Web・アプリ開発</h3>
+            <ul class="tags" aria-label="対応領域">
+              <li>Webサービス</li><li>LINE</li><li>業務システム</li><li>プロダクト</li>
+            </ul>
+          </div>
           <dl>
             <dt>何をするか</dt>
             <dd>Webサービス、LINE、業務システム、マッチングサービスなどを、企画から開発、運営まで手がけます。</dd>
             <dt>なぜ必要か</dt>
             <dd>要件を整理し、小さく作って実務で試す。その積み重ねが、使われないシステムを作らない一番の方法だからです。</dd>
           </dl>
-          <ul class="tags" aria-label="対応領域">
-            <li>Webサービス</li><li>LINE</li><li>業務システム</li><li>プロダクト</li>
-          </ul>
         </article>
-        <article class="service reveal">
-          <div class="service-top"><span class="no"></span></div>
-          <p class="en">New Business</p>
-          <h3 class="h3">新規事業伴走</h3>
+        <article class="svc-row reveal" id="new-business">
+          <div class="svc-name">
+            <p class="en">New Business</p>
+            <h3 class="h3">新規事業伴走</h3>
+            <ul class="tags" aria-label="対応領域">
+              <li>企画</li><li>営業</li><li>PoC</li><li>マーケティング</li><li>立ち上げ</li>
+            </ul>
+          </div>
           <dl>
             <dt>何をするか</dt>
             <dd>企画、営業、PoC、マーケティング、立ち上げまで、現場に入って一緒に動きます。</dd>
             <dt>なぜ必要か</dt>
             <dd>助言だけでは事業は動きません。考える人と、動く人と、結果まで追う人が同じ側にいる必要があります。</dd>
           </dl>
-          <ul class="tags" aria-label="対応領域">
-            <li>企画</li><li>営業</li><li>PoC</li><li>マーケティング</li><li>立ち上げ</li>
-          </ul>
         </article>
       </div>
     </div>
@@ -245,7 +313,7 @@
           </div>
           <div class="product-intro">
             <p>やりたいことを話すだけで、AIが業務のシステムを作ります。進み具合も、本当に動くかの証拠も、決めるべきところも全部見える形で、ZUDIAが最後まで一緒に進めます。</p>
-            <div class="product-actions"><a class="btn btn-primary" href="products.html#zudia-ai">詳しく見る <span class="arrow">→</span></a></div>
+            <div class="product-actions"><a class="btn btn-primary" href="ai/">詳しく見る <span class="arrow">→</span></a></div>
           </div>
         </article>
         <article class="product reveal">
@@ -253,7 +321,7 @@
           <p class="product-cat">SNS運用の自動化</p>
           <p class="product-lead">ネタ集めから投稿まで、SNS運用をAIでまとめて回す。</p>
           <p>note・X・Instagram・Facebook・Threads への予約投稿と、複数のAIによる文章生成をひとつの管理画面で。クライアントのアカウント運用で稼働しています。</p>
-          <div class="product-actions"><a class="btn btn-ghost" href="products.html#postonai">詳しく見る <span class="arrow">→</span></a></div>
+          <div class="product-actions"><a class="btn btn-ghost" href="poston/">詳しく見る <span class="arrow">→</span></a></div>
         </article>
         <article class="product reveal">
           <div class="product-head"><h3 class="product-name">ウマぃ飯</h3><span class="status is-live">公開中</span></div>
@@ -296,7 +364,6 @@
           <p>支援側が作り続けるのではなく、社内の担当者が自分で改善を続けられる状態を目指します。</p>
         </li>
       </ol>
-      <p class="steps-note reveal">経営者の話を、現場で使える形に変える。現場の困りごとを、開発側に伝わる形に変える。ZUDIAは、経営と現場と開発のあいだに立つ役割を引き受けます。</p>
     </div>
   </section>
 
@@ -386,6 +453,7 @@
           <p>現場、営業、システム。異なる仕事を経験してきました。空調設備工事の現場監督として工程と人を動かし、不動産営業として相手の状況を聞いて意思決定を支え、システム開発会社でWebサービスやLINE、業務システムの企画・開発・運営に携わってきました。</p>
           <p>その中で身についたのは、経営者や現場の話を聞き、課題を整理し、AIやシステムで改善方法を考え、開発側に伝え、実際に使えるところまで進める、という一連の動き方です。「何を作るか」より先に、「何を解決するか」を考えます。</p>
           <p>AIを使うことが目的ではありません。あなたの仕事が楽になり、事業が前へ進むこと。それだけを見て、一緒に動きます。</p>
+          <p class="message-sign"><span class="role">株式会社ZUDIA 代表取締役</span><span class="name">植田 昌基</span></p>
         </div>
       </div>
     </div>
@@ -425,14 +493,17 @@
       <div class="reveal">
         <p class="eyebrow">Contact</p>
         <div class="section-head">
-          <h2 class="h2">まずは、話を<br>聞かせてください。</h2>
-          <p>業務の困りごと、AIに自社が出てこない理由、新しい事業のアイデア。まだ形になっていない相談でも構いません。話を聞くところから、一緒に始めます。</p>
+          <h2 class="h2">お問い合わせ</h2>
+          <p>業務の困りごと、AIに自社が出てこない理由、新しい事業のアイデア。まだ形になっていないご相談でも構いません。内容を確認のうえ、担当者よりご連絡します。</p>
         </div>
       </div>
-      <div class="contact-actions reveal" style="--d:.15s">
-        <a class="btn btn-primary" href="mailto:info@zudia.jp?subject=ZUDIAへの相談">メールで相談する <span class="arrow">→</span></a>
-        <a class="btn btn-ghost" href="mailto:info@zudia.jp?subject=AI検索対策（AIO診断）の相談">AI検索対策について聞く</a>
-        <p class="note">info@zudia.jp</p>
+      <div class="reveal" style="--d:.15s">
+        <div class="contact-routes">
+          <a href="mailto:info@zudia.jp?subject=【ご相談】ZUDIAのサービスについて"><b>サービスに関するご相談</b><small>AI導入・システム開発・新規事業など</small><span class="arrow">→</span></a>
+          <a href="mailto:info@zudia.jp?subject=【ご相談】AI検索対策（AIO診断）について"><b>AI検索対策（AIO診断）のご相談</b><small>生成AIでの見え方の実測から</small><span class="arrow">→</span></a>
+          <a href="mailto:info@zudia.jp?subject=【お問い合わせ】取材・その他"><b>取材・その他のお問い合わせ</b><small>協業、取材、採用など</small><span class="arrow">→</span></a>
+        </div>
+        <p class="note">窓口：info@zudia.jp</p>
       </div>
     </div>
   </section>
@@ -449,11 +520,13 @@
           <span class="brand-tag">TOWARD YOU</span>
         </span>
       </a>
-      <p class="footer-message">Toward You</p>
+      <p class="footer-company"><b>株式会社ZUDIA</b><span>東京都渋谷区桜丘町26番1号 セルリアンタワー15階</span><span>info@zudia.jp</span></p>
     </div>
     <nav class="footer-nav" aria-label="フッター">
-      <a href="#about">私たちについて</a>
-      <a href="#service">サービス</a>
+      <a href="#news">お知らせ</a>
+      <a href="#about">企業理念</a>
+      <a href="#model">支援のかたち</a>
+      <a href="#service">事業内容</a>
       <a href="products.html">プロダクト・実績</a>
       <a href="#approach">進め方</a>
       <a href="#message">代表メッセージ</a>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PostonAI｜SNS運用を、AIでまとめて回す｜株式会社ZUDIA</title>
+<meta name="description" content="PostonAIは、SNS運用をAIでまとめて回すWebシステムです。文章生成、予約投稿、投稿ログの確認まで。株式会社ZUDIAが開発・運用し、クライアントのアカウント運用で稼働中です。相談は無料です。">
+<meta property="og:title" content="PostonAI｜SNS運用を、AIでまとめて回す｜株式会社ZUDIA">
+<meta property="og:description" content="ネタ集めから投稿まで、SNS運用をAIでまとめて回す。文章生成・予約投稿・投稿ログの確認をPostonAIで。アカウントを守ることを最優先に、ZUDIAが設定を一緒に進めます。">
+<meta property="og:url" content="https://zudia.jp/poston/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://zudia.jp/poston/">
+<link rel="icon" type="image/png" href="../assets/zudia-symbol.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Nunito+Sans:wght@600;700&display=swap">
+<link rel="stylesheet" href="../css/style.css">
+<script src="../js/main.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://zudia.jp/poston/#app",
+      "name": "PostonAI",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "url": "https://zudia.jp/poston/",
+      "description": "SNS運用をAIでまとめて回すWebシステムです。株式会社ZUDIAが開発・運用し、クライアントのアカウント運用で稼働中です。",
+      "publisher": {"@id": "https://zudia.jp/#org"}
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://zudia.jp/"},
+        {"@type": "ListItem", "position": 2, "name": "プロダクト・実績", "item": "https://zudia.jp/products.html"},
+        {"@type": "ListItem", "position": 3, "name": "PostonAI", "item": "https://zudia.jp/poston/"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "どのSNSに対応していますか？", "acceptedAnswer": {"@type": "Answer", "text": "投稿先はnote、X、Instagram、Facebook、Threadsです。XのDM自動返信、Xとnoteの自動いいねにも対応しています。"}},
+        {"@type": "Question", "name": "AIが作った文章は、そのまま投稿するのですか？", "acceptedAnswer": {"@type": "Answer", "text": "投稿テンプレートを使い、生成した文章を確認して調整できます。OpenAI・Gemini・Claudeなど、複数の生成AIを使い分けます。"}},
+        {"@type": "Question", "name": "アカウントが凍結することはありませんか？", "acceptedAnswer": {"@type": "Answer", "text": "凍結のリスクをゼロにはできません。規約に沿った適切な投稿間隔で運用し、いきなり大量投稿しないことを大切にしています。作ったばかりのアカウントは、数日〜2週間ほど手で普通に使ってから連携し、リスクを下げる運用をします。"}},
+        {"@type": "Question", "name": "最初の設定は難しいですか？", "acceptedAnswer": {"@type": "Answer", "text": "Xは開発者向けの設定で取得するAPIキー、noteはログイン情報を使って連携します。ZUDIAが設定マニュアルを用意し、つまずいたところは一緒に設定します。テスト投稿を行い、投稿ログで成功を確認してから本番の予約投稿を始めます。"}},
+        {"@type": "Question", "name": "投稿できたか、後から確認できますか？", "acceptedAnswer": {"@type": "Answer", "text": "投稿ログで成功・失敗を確認できます。編集ログも備えています。"}},
+        {"@type": "Question", "name": "料金はいくらですか？", "acceptedAnswer": {"@type": "Answer", "text": "アカウント数と運用内容に合わせてお見積りします。相談は無料です。アカウント設計・投稿テンプレート・Xの運用・収益化の設計まで含めた「運用ノウハウ込み」の提供は、現在準備中です。"}}
+      ]
+    }
+  ]
+}
+</script>
+<style>
+/* ai/index.html の構成を踏襲。色・書体は共通トークンのみを使用します。 */
+.lp-hero h1 { font-size: clamp(32px, 4.4vw, 54px); line-height: 1.35; }
+.lp-hero .wrap > *, .evidence > * { min-width: 0; }
+.product-name { font-family: var(--font-display); font-size: 22px; letter-spacing: .03em; }
+.hero-status { margin-top: 20px; font-size: 13px; color: var(--ink-soft); }
+.mock { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px; box-shadow: 0 30px 60px -36px var(--brand-navy); display: grid; gap: 16px; min-width: 0; margin: 0; }
+.mock-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 12px; font-size: 12px; color: var(--ink-soft); }
+.mock-title { font-family: var(--font-heading); font-weight: 700; font-size: 18px; }
+.mock table { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: 13px; }
+.mock th, .mock td { padding: 12px 5px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: middle; overflow-wrap: anywhere; }
+.mock th { font-size: 12px; color: var(--ink-soft); font-weight: 500; }
+.mock th:nth-child(2) { width: 42%; }
+.mock th:last-child { width: 25%; }
+.mock time { display: block; font-size: 12px; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 12px; font-weight: 500; }
+.tag-run { background: var(--accent-soft); color: var(--accent); }
+.tag-ok { background: var(--ok-bg); color: var(--ok); }
+.tag-fail { background: var(--crit-bg); color: var(--crit); }
+.mock-note { font-size: 12px; color: var(--ink-soft); }
+.pains { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); gap: 12px; }
+.pains li { padding: 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; font-weight: 500; }
+.pains-answer { margin-top: 28px; font-size: 19px; font-weight: 700; font-family: var(--font-heading); }
+.promises { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.promise, .plan { border: 1px solid var(--line); border-radius: 14px; padding: 24px; background: var(--surface); display: grid; gap: 16px; align-content: start; min-width: 0; }
+.promise .num { font-family: var(--font-display); font-size: 13px; font-weight: 700; color: var(--accent); letter-spacing: .14em; }
+.promise h3, .plan h3 { font-size: 21px; }
+.promise dl { display: grid; gap: 8px; }
+.promise dt { font-size: 12px; font-weight: 700; color: var(--ink-soft); }
+.promise dd { margin: 0 0 8px; font-size: 14px; }
+.evidence { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: start; }
+.screen-flow { margin-top: 26px; display: grid; gap: 12px; }
+.screen-flow li { padding: 12px 0; border-top: 1px solid var(--line); }
+.screen-flow b, .screen-flow span { display: block; }
+.screen-flow span { color: var(--ink-soft); font-size: 14px; }
+.flow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.flow li { border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: grid; gap: 10px; align-content: start; }
+.flow .num { font-family: var(--font-display); font-size: 24px; font-weight: 700; color: var(--accent); }
+.flow b { font-family: var(--font-heading); font-size: 17px; }
+.flow p { font-size: 14px; color: var(--ink-soft); }
+.flow-note { margin-top: 24px; color: var(--ink-soft); }
+.safety { display: grid; gap: 16px; }
+.safety li { padding: 20px 24px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.safety h3 { font-size: 18px; margin-bottom: 6px; }
+.safety p { color: var(--ink-soft); }
+.plans { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.plan .badge { justify-self: start; background: var(--accent-soft); color: var(--accent); padding: 3px 12px; border-radius: 999px; font-size: 13px; }
+.plan p { color: var(--ink-soft); }
+.faq { display: grid; gap: 10px; }
+.faq details { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; }
+.faq summary { cursor: pointer; padding: 18px 22px; font-weight: 700; font-family: var(--font-heading); }
+.faq details p { padding: 0 22px 20px; color: var(--ink-soft); }
+@media (max-width: 1000px) { .promises, .flow { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 760px) { .evidence, .plans { grid-template-columns: 1fr; } }
+@media (max-width: 560px) {
+  .promises, .flow { grid-template-columns: 1fr; }
+  .mock { padding: 18px 14px; }
+  .lp-hero h1 { font-size: clamp(29px, 8vw, 38px); }
+  .hero-actions .btn { padding-inline: 22px; }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../" aria-label="ZUDIA トップへ">
+      <img src="../assets/zudia-symbol.png" alt="" width="38" height="29">
+      <span><span class="brand-name">ZUDIA</span><br><span class="brand-tag">TOWARD YOU</span></span>
+    </a>
+    <nav class="nav" aria-label="ページ内">
+      <a href="#features">できること</a><a href="#flow">導入の流れ</a><a href="#price">料金</a><a href="#faq">よくある質問</a>
+      <a class="btn btn-primary" href="#contact">無料で相談する</a>
+    </nav>
+    <details class="menu">
+      <summary>MENU</summary>
+      <div class="menu-list">
+        <a href="#features">できること</a><a href="#flow">導入の流れ</a><a href="#price">料金</a><a href="#faq">よくある質問</a><a href="#contact">無料で相談する</a>
+      </div>
+    </details>
+  </div>
+</header>
+<main id="top">
+  <section class="hero lp-hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow product-name">PostonAI</p>
+        <h1>ネタ集めから投稿まで、<br>SNS運用をAIで<br><span class="grad-text">まとめて回す。</span></h1>
+        <p class="hero-sub lead reveal">PostonAIは、SNS運用をAIでまとめて回すWebシステムです。外部データの取り込みや文章生成から、予約投稿、投稿結果の確認まで。日々の運用をひとつのシステムで進めます。</p>
+        <div class="hero-actions reveal"><a class="btn btn-primary" href="mailto:info@zudia.jp?subject=PostonAI%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">無料で相談する</a><a class="btn btn-ghost" href="#features">できることを見る</a></div>
+        <p class="hero-status">株式会社ZUDIAが開発・運用しています。<br>クライアントのアカウント運用で稼働中です。</p>
+      </div>
+      <figure class="mock reveal" aria-label="予約投稿の一覧画面のイメージ">
+        <div class="mock-head"><span>PostonAI</span><span>画面のイメージ</span></div>
+        <p class="mock-title">投稿スケジュール管理</p>
+        <table>
+          <thead><tr><th scope="col">投稿先</th><th scope="col">予定日時</th><th scope="col">状態</th></tr></thead>
+          <tbody>
+            <tr><td>note</td><td><time datetime="2030-04-10T09:00:00+09:00">04/10<br>09:00</time></td><td><span class="tag tag-run">予約</span></td></tr>
+            <tr><td>X</td><td><time datetime="2030-04-10T12:00:00+09:00">04/10<br>12:00</time></td><td><span class="tag tag-run">予約</span></td></tr>
+            <tr><td>Instagram</td><td><time datetime="2030-04-11T10:00:00+09:00">04/11<br>10:00</time></td><td><span class="tag tag-run">予約</span></td></tr>
+          </tbody>
+        </table>
+        <figcaption class="mock-note">説明のための例です。日時・状態は架空のデータです。</figcaption>
+      </figure>
+    </div>
+  </section>
+  <section class="section tint" id="pain">
+    <div class="wrap">
+      <div class="section-head reveal"><p class="eyebrow">Your Problem</p><h2 class="h2">SNS運用、こんなところで<br>止まっていませんか？</h2></div>
+      <ul class="pains reveal"><li>毎日の投稿が続かない</li><li>SNSごとに投稿作業がバラバラ</li><li>何を書くか考えるのに時間がかかる</li><li>自動化したいが、アカウント凍結が怖い</li></ul>
+      <p class="pains-answer reveal">文章を考える作業も、投稿する作業も。アカウントを守る運用と一緒に整えます。</p>
+    </div>
+  </section>
+  <section class="section" id="features">
+    <div class="wrap">
+      <div class="section-head reveal"><p class="eyebrow">Features</p><h2 class="h2">投稿の準備から、<br>結果の確認まで。</h2><p>投稿先はnote、X、Instagram、Facebook、Threadsです。運用に必要な作業をPostonAIにまとめます。</p></div>
+      <div class="promises">
+        <article class="promise reveal"><span class="num">01</span><h3>AIで文章を作る</h3><dl><dt>何をするか</dt><dd>OpenAI・Gemini・Claudeなど、複数の生成AIを使い分けて文章を生成します。投稿テンプレートも使えます。</dd><dt>なぜ必要か</dt><dd>何を書くか迷うときに、文章のたたき台と投稿の型を用意するためです。</dd></dl></article>
+        <article class="promise reveal"><span class="num">02</span><h3>予約投稿をまとめる</h3><dl><dt>何をするか</dt><dd>予約投稿の作成・コピー・一括操作ができます。</dd><dt>なぜ必要か</dt><dd>SNSごとに分かれがちな投稿の準備を、まとめて進めるためです。</dd></dl></article>
+        <article class="promise reveal"><span class="num">03</span><h3>画像・動画を管理する</h3><dl><dt>何をするか</dt><dd>画像・動画ライブラリで、投稿に使う素材を管理します。</dd><dt>なぜ必要か</dt><dd>文章だけでなく、画像や動画も投稿の準備に必要だからです。</dd></dl></article>
+        <article class="promise reveal"><span class="num">04</span><h3>投稿と編集の記録を見る</h3><dl><dt>何をするか</dt><dd>投稿ログで成功・失敗を確認できます。編集ログも備えています。</dd><dt>なぜ必要か</dt><dd>予約して終わりにせず、投稿結果と編集の記録を確認するためです。</dd></dl></article>
+        <article class="promise reveal"><span class="num">05</span><h3>返信・いいねを自動化する</h3><dl><dt>何をするか</dt><dd>XのDM自動返信、Xとnoteの自動いいねに対応しています。</dd><dt>なぜ必要か</dt><dd>投稿以外にもある、返信やいいねの作業を自動化するためです。規約に沿った運用を大切にします。</dd></dl></article>
+        <article class="promise reveal"><span class="num">06</span><h3>外部データで記事を更新する</h3><dl><dt>何をするか</dt><dd>外部のデータを取り込んで、記事を自動で更新する仕組みがあります。</dd><dt>なぜ必要か</dt><dd>記事を作るときだけでなく、データを取り込んで更新する作業にも対応するためです。</dd></dl></article>
+      </div>
+    </div>
+  </section>
+  <section class="section tint" id="screens">
+    <div class="wrap evidence">
+      <div class="reveal"><div class="section-head"><p class="eyebrow">Screen Image</p><h2 class="h2">予約した後も、<br>投稿の成功を確かめます。</h2><p>管理画面では、SNSの登録、予約、投稿結果の確認の順に進めます。</p></div>
+        <ol class="screen-flow"><li><b>1. アカウント管理</b><span>SNSアカウントを登録します。</span></li><li><b>2. 投稿スケジュール管理</b><span>投稿を予約します。</span></li><li><b>3. 投稿ログ</b><span>投稿が成功したかを確認します。</span></li></ol>
+      </div>
+      <figure class="mock reveal" aria-label="投稿ログ画面のイメージ">
+        <div class="mock-head"><span>PostonAI</span><span>画面のイメージ</span></div><p class="mock-title">投稿ログ</p>
+        <table><thead><tr><th scope="col">投稿先</th><th scope="col">時刻</th><th scope="col">結果</th></tr></thead><tbody>
+          <tr><td>note</td><td><time datetime="2030-04-09T09:00:00+09:00">04/09<br>09:00</time></td><td><span class="tag tag-ok">成功</span></td></tr>
+          <tr><td>X</td><td><time datetime="2030-04-09T12:00:00+09:00">04/09<br>12:00</time></td><td><span class="tag tag-ok">成功</span></td></tr>
+          <tr><td>Threads</td><td><time datetime="2030-04-09T15:00:00+09:00">04/09<br>15:00</time></td><td><span class="tag tag-fail">失敗</span></td></tr>
+        </tbody></table><figcaption class="mock-note">説明のための例です。日時・結果は架空のデータです。</figcaption>
+      </figure>
+    </div>
+  </section>
+  <section class="section" id="flow">
+    <div class="wrap">
+      <div class="section-head reveal"><p class="eyebrow">Getting Started</p><h2 class="h2">小さく試してから、<br>本番の運用へ進みます。</h2></div>
+      <ol class="flow">
+        <li class="reveal"><span class="num" aria-hidden="true">01</span><b>SNSアカウントを準備します</b><p>X・noteのアカウントを作成し、プロフィールを設定します。noteで有料記事を売る場合は、クリエイター登録も行います。</p></li>
+        <li class="reveal"><span class="num" aria-hidden="true">02</span><b>まずは手で普通に使います</b><p>作ったばかりのアカウントは、数日〜2週間ほど手で普通に使ってから連携します。凍結のリスクを下げるためです。</p></li>
+        <li class="reveal"><span class="num" aria-hidden="true">03</span><b>PostonAIに登録します</b><p>「アカウント管理」で、用意したSNSアカウントを登録します。</p></li>
+        <li class="reveal"><span class="num" aria-hidden="true">04</span><b>SNSと連携します</b><p>Xは開発者向けの設定で取得するAPIキーという連携用の情報を使います。noteはログイン情報で連携します。</p></li>
+        <li class="reveal"><span class="num" aria-hidden="true">05</span><b>テスト投稿を確かめます</b><p>ハッシュタグやメンションを使わない、シンプルな投稿から始めます。「投稿ログ」で成功を確認します。</p></li>
+        <li class="reveal"><span class="num" aria-hidden="true">06</span><b>本番の予約投稿を始めます</b><p>「投稿スケジュール管理」で予約します。いきなり大量投稿せず、規約に沿った適切な投稿間隔で運用します。</p></li>
+      </ol>
+      <p class="flow-note reveal">ZUDIAが設定マニュアルを用意します。つまずいたところは、一緒に設定します。</p>
+    </div>
+  </section>
+  <section class="section tint" id="safety">
+    <div class="wrap evidence">
+      <div class="section-head reveal"><p class="eyebrow">Account Care</p><h2 class="h2">アカウントを守ることを、<br>最優先にします。</h2><p>自動化しても、凍結のリスクをゼロにはできません。リスクを下げるために、運用の始め方と投稿の仕方を大切にします。</p></div>
+      <ul class="safety reveal"><li><h3>規約に沿って運用します</h3><p>適切な投稿間隔で運用し、いきなり大量投稿しません。</p></li><li><h3>新しいアカウントは、急いで連携しません</h3><p>作ったばかりのアカウントは、数日〜2週間ほど手で普通に使ってから連携します。</p></li><li><h3>シンプルなテストから始めます</h3><p>ハッシュタグやメンションを使わない投稿で試し、投稿ログで成功を確認してから本番へ進みます。</p></li></ul>
+    </div>
+  </section>
+  <section class="section" id="price">
+    <div class="wrap">
+      <div class="section-head reveal"><p class="eyebrow">Price</p><h2 class="h2">アカウント数と運用内容に<br>合わせて、お見積りします。</h2><p>相談は無料です。</p></div>
+      <div class="plans">
+        <div class="plan reveal"><span class="badge">個別にお見積り</span><h3>まずは、運用内容をお聞かせください。</h3><p>利用するアカウント数と運用内容に合わせて、料金をお見積りします。</p><p><a href="mailto:info@zudia.jp?subject=PostonAI%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">無料で相談する</a></p></div>
+        <div class="plan reveal"><span class="badge">現在準備中</span><h3>これからは、運用ノウハウも一緒に。</h3><p>ツールだけでなく、アカウント設計・投稿テンプレート・Xの運用・収益化の設計まで含めた「運用ノウハウ込み」の提供を進めています。現在は準備中です。</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="section tint" id="faq">
+    <div class="wrap">
+      <div class="section-head reveal"><p class="eyebrow">FAQ</p><h2 class="h2">よくある質問</h2></div>
+      <div class="faq reveal">
+        <details><summary>どのSNSに対応していますか？</summary><p>投稿先はnote、X、Instagram、Facebook、Threadsです。XのDM自動返信、Xとnoteの自動いいねにも対応しています。</p></details>
+        <details><summary>AIが作った文章は、そのまま投稿するのですか？</summary><p>投稿テンプレートを使い、生成した文章を確認して調整できます。OpenAI・Gemini・Claudeなど、複数の生成AIを使い分けます。</p></details>
+        <details><summary>アカウントが凍結することはありませんか？</summary><p>凍結のリスクをゼロにはできません。規約に沿った適切な投稿間隔で運用し、いきなり大量投稿しないことを大切にしています。作ったばかりのアカウントは、数日〜2週間ほど手で普通に使ってから連携し、リスクを下げる運用をします。</p></details>
+        <details><summary>最初の設定は難しいですか？</summary><p>Xは開発者向けの設定で取得するAPIキー、noteはログイン情報を使って連携します。ZUDIAが設定マニュアルを用意し、つまずいたところは一緒に設定します。テスト投稿を行い、投稿ログで成功を確認してから本番の予約投稿を始めます。</p></details>
+        <details><summary>投稿できたか、後から確認できますか？</summary><p>投稿ログで成功・失敗を確認できます。編集ログも備えています。</p></details>
+        <details><summary>料金はいくらですか？</summary><p>アカウント数と運用内容に合わせてお見積りします。相談は無料です。アカウント設計・投稿テンプレート・Xの運用・収益化の設計まで含めた「運用ノウハウ込み」の提供は、現在準備中です。</p></details>
+      </div>
+    </div>
+  </section>
+  <section class="section on-navy contact" id="contact">
+    <div class="wrap">
+      <div class="reveal"><p class="eyebrow">Contact</p><div class="section-head"><h2 class="h2">SNS運用の困りごとを、<br>お聞かせください。</h2><p>運用したいアカウントや、日々の投稿で困っていることをご相談ください。相談は無料です。</p></div></div>
+      <div class="contact-actions reveal"><a class="btn btn-primary" href="mailto:info@zudia.jp?subject=PostonAI%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">無料で相談する</a><a class="btn btn-ghost" href="../">ZUDIAについて</a><p class="note">info@zudia.jp</p></div>
+    </div>
+  </section>
+</main>
+<footer class="site-footer on-navy section">
+  <div class="wrap">
+    <div class="footer-top">
+      <a class="brand" href="../" aria-label="ZUDIA トップへ"><img src="../assets/zudia-symbol.png" alt="" width="38" height="29"><span><span class="brand-name">ZUDIA</span><br><span class="brand-tag">TOWARD YOU</span></span></a>
+      <p class="footer-message">Toward You</p>
+    </div>
+    <nav class="footer-nav" aria-label="フッター">
+      <a href="../#about">私たちについて</a><a href="../#service">サービス</a><a href="../products.html">プロダクト・実績</a><a href="../#approach">進め方</a><a href="../#message">代表メッセージ</a><a href="../#company">会社概要</a><a href="../#contact">お問い合わせ</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+    <div class="footer-bottom"><span class="en">© <span data-year>2026</span> ZUDIA Inc.</span><span>もっと、あなたへ。</span></div>
+  </div>
+</footer>
+</body>
+</html>

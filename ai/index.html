@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZUDIA AI｜話すだけで、会社の仕組みができあがる</title>
+<meta name="description" content="ZUDIA AI は、やりたいことを話すだけで、AIが業務システムを作るサービスです。進み具合・品質・決めどころが全部見え、株式会社ZUDIAが公開後まで伴走します。プログラミングの知識は要りません。">
+<!--
+  ZUDIA AI の LP(2026-10-12 初稿)。公開URL: https://zudia.jp/ai/
+  - 読み手: エンジニアのいない中小企業の経営者・担当者。専門用語は使わない(ハブ=現場監督AI、Worker=職人AI)
+  - 料金は未確定のため「個別にお見積り」。決まったら #price を差し替える
+  - 事例は載せていない(1社目の導入後に追加)。数字は社内開発で測ったものだけ
+  - 色・書体は ../css/style.css のトークンのみ。下の <style> も var() だけで書く
+-->
+<meta property="og:title" content="ZUDIA AI｜話すだけで、会社の仕組みができあがる">
+<meta property="og:description" content="やりたいことを話すだけで、AIが業務システムを作る。進み具合・品質・決めどころが全部見える。ZUDIAが最後まで伴走します。">
+<meta property="og:url" content="https://zudia.jp/ai/">
+<meta property="og:image" content="https://zudia.jp/assets/zudia-primary.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://zudia.jp/ai/">
+<link rel="icon" type="image/png" href="../assets/zudia-symbol.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Nunito+Sans:wght@600;700&display=swap">
+<link rel="stylesheet" href="../css/style.css">
+<script src="../js/main.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://zudia.jp/ai/#service",
+  "name": "ZUDIA AI",
+  "serviceType": "AIによる業務システムの開発と伴走",
+  "description": "やりたいことを話すだけで、AIが業務システムを作るサービス。作業ごとの確認結果を見せ、公開・課金・データ削除はお客様の承認で進め、公開後も月1回の振り返りで改修を続ける。",
+  "provider": { "@type": "Organization", "@id": "https://zudia.jp/#org", "name": "株式会社ZUDIA", "url": "https://zudia.jp/" },
+  "areaServed": "JP",
+  "audience": { "@type": "BusinessAudience", "audienceType": "エンジニアのいない中小企業" },
+  "url": "https://zudia.jp/ai/"
+}
+</script>
+<style>
+/* ZUDIA AI LP 専用。色は style.css のトークンだけを使う */
+.lp-hero .wrap { align-items: center; }
+.lp-hero h1 { font-size: clamp(34px, 5.6vw, 64px); line-height: 1.25; }
+.mock { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; box-shadow: 0 30px 60px -36px var(--brand-navy); display: grid; gap: 12px; min-width: 0; }
+.mock-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 13px; color: var(--ink-faint); }
+.mock-title { font-family: var(--font-heading); font-weight: 700; font-size: 16px; color: var(--ink); }
+.mock ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.mock li { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; font-size: 14px; }
+.tag { font-size: 12px; font-weight: 500; padding: 2px 10px; border-radius: 999px; white-space: nowrap; }
+.tag-ok { background: var(--ok-bg); color: var(--ok); }
+.tag-run { background: var(--accent-soft); color: var(--accent); }
+.tag-you { background: var(--brand-gradient); color: var(--brand-navy); font-weight: 700; }
+.mock-note { font-size: 12px; color: var(--ink-faint); margin: 0; }
+
+.pains { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; list-style: none; padding: 0; margin: 0; }
+.pains li { border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; background: var(--surface); font-weight: 500; }
+.pains-answer { margin-top: 28px; font-family: var(--font-heading); font-weight: 700; font-size: clamp(18px, 2vw, 22px); }
+
+.crew { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin-top: 8px; }
+.crew > div { border: 1px solid var(--line); border-radius: 12px; padding: 18px; background: var(--surface); display: grid; gap: 6px; align-content: start; min-width: 0; }
+.crew .who { font-family: var(--font-display); font-weight: 700; font-size: 11px; letter-spacing: .16em; color: var(--hot); text-transform: uppercase; }
+.crew b { font-family: var(--font-heading); font-size: 17px; }
+.crew p { margin: 0; font-size: 14px; color: var(--ink-soft); }
+.crew .is-you { border-color: var(--hot-2); }
+
+.promises { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.promise { border: 1px solid var(--line); border-radius: 14px; padding: 24px; background: var(--surface); display: grid; gap: 12px; align-content: start; min-width: 0; }
+.promise .num { font-family: var(--font-display); font-weight: 700; font-size: 13px; letter-spacing: .14em; color: var(--hot); }
+.promise h3 { margin: 0; font-size: clamp(19px, 2vw, 22px); }
+.promise dl { margin: 0; display: grid; gap: 10px; }
+.promise dt { font-weight: 700; font-size: 13px; color: var(--ink-faint); }
+.promise dd { margin: 0; font-size: 15px; }
+
+.evidence { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: start; }
+.card-ev { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px; display: grid; gap: 14px; min-width: 0; }
+.card-ev h4 { margin: 0; font-size: 15px; }
+.card-ev .row { display: grid; gap: 6px; padding-top: 12px; border-top: 1px solid var(--line); }
+.card-ev .row > span:first-child { font-size: 12px; font-weight: 700; color: var(--ink-faint); letter-spacing: .06em; }
+.card-ev .row p { margin: 0; font-size: 14px; display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
+@media (max-width: 760px) { .evidence { grid-template-columns: 1fr; } }
+
+.examples { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; list-style: none; padding: 0; margin: 0; }
+.examples li { padding: 16px 18px; border-radius: 10px; background: var(--surface); border: 1px solid var(--line); display: grid; gap: 4px; }
+.examples b { font-family: var(--font-heading); }
+.examples span { font-size: 14px; color: var(--ink-soft); }
+
+.flow { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; counter-reset: f; }
+.flow li { counter-increment: f; border: 1px solid var(--line); border-radius: 12px; padding: 18px; display: grid; gap: 6px; align-content: start; }
+.flow li::before { content: counter(f); font-family: var(--font-display); font-weight: 700; font-size: 22px; background: var(--brand-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.flow b { font-family: var(--font-heading); }
+.flow span { font-size: 14px; color: var(--ink-soft); }
+.flow .who { font-size: 12px; color: var(--ink-faint); }
+
+.plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+.plan { border: 1px solid var(--line); border-radius: 14px; padding: 24px; background: var(--surface); display: grid; gap: 12px; align-content: start; min-width: 0; }
+.plan h3 { margin: 0; font-size: 20px; }
+.plan ul { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; font-size: 15px; }
+.plan .badge { justify-self: start; }
+
+.price { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.price table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.price th, .price td { padding: 16px 20px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.price tr:last-child th, .price tr:last-child td { border-bottom: 0; }
+.price th { width: 30%; font-family: var(--font-heading); font-weight: 700; background: var(--surface-tint); }
+.price td { background: var(--surface); }
+
+.faq { display: grid; gap: 10px; }
+.faq details { border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+.faq summary { cursor: pointer; padding: 16px 20px; font-weight: 700; font-family: var(--font-heading); list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font-family: var(--font-display); color: var(--hot); }
+.faq details[open] summary::after { content: "−"; }
+.faq details p { margin: 0; padding: 0 20px 18px; color: var(--ink-soft); }
+.faq summary:focus-visible { outline: 2px solid var(--hot-2); outline-offset: 2px; border-radius: 10px; }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "プログラミングがまったく分かりませんが、使えますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい。話す・読む・決めるだけで進みます。報告も専門用語を使わずに書きます。分からないところは、担当者がその場で説明します。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "どんな PC が必要ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "「御社の PC で使う」場合は、Windows の PC が 1 台あれば始められます。快適に使える目安は、ご相談時に今の PC を見てお伝えします。「ZUDIA におまかせ」はブラウザだけで使える形を準備中です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "AI の利用料はいくらかかりますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "お客様ご自身の AI のご契約（Claude の有料プランなど）でお支払いいただきます。作るものの量で適したプランが変わるため、ご相談時に目安をお伝えします。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "作ったものは誰のものですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "御社のものです。作ったものは御社のアカウントに保存し、ご契約をやめた後も手元に残ります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "会社の情報やパスワードは安全ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "パスワードや鍵は御社の PC の中に置き、作業の記録や報告には書きません。保存の前には、パスワードなどが混ざっていないかを自動で調べます。公開・課金・データの削除は、必ずあなたの承認を通します。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "どのくらいの期間でできますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "最初の一つは、数週間でお渡しできる大きさから始めます。大きなものは、小さく分けて順番に作ります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "まだ何を作りたいか決まっていません。",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "それで大丈夫です。今の困りごとを聞かせていただき、何から作ると効くかを一緒に考えるところから始めます。"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://zudia.jp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "プロダクト・実績",
+          "item": "https://zudia.jp/products.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "ZUDIA AI",
+          "item": "https://zudia.jp/ai/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../" aria-label="ZUDIA トップへ">
+      <img src="../assets/zudia-symbol.png" alt="" width="38" height="29">
+      <span>
+        <span class="brand-name">ZUDIA</span><br>
+        <span class="brand-tag">TOWARD YOU</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="ページ内">
+      <a href="#what">ZUDIA AI とは</a>
+      <a href="#promise">3つの約束</a>
+      <a href="#flow">進み方</a>
+      <a href="#price">料金</a>
+      <a href="#faq">よくある質問</a>
+      <a class="btn btn-primary" href="#contact">無料で相談する</a>
+    </nav>
+    <details class="menu">
+      <summary>MENU</summary>
+      <div class="menu-list">
+        <a href="#what">ZUDIA AI とは</a>
+        <a href="#promise">3つの約束</a>
+        <a href="#flow">進み方</a>
+        <a href="#price">料金</a>
+        <a href="#faq">よくある質問</a>
+        <a href="#contact">無料で相談する</a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero lp-hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">ZUDIA AI</p>
+        <h1><span class="line" style="--d:.05s">話すだけで、</span><span class="line" style="--d:.2s">会社の仕組みが</span><span class="line" style="--d:.35s"><span class="grad-text">できあがる。</span></span></h1>
+        <p class="hero-sub lead reveal" style="--d:.45s">「お客様を一覧で見たい」「予約と売上を一画面にまとめたい」。やりたいことを話すだけで、AI が業務のシステムを作ります。どこまで進んだか、本当に動くか、どこを決めればいいか。全部見える形で、ZUDIA が最後まで一緒に進めます。</p>
+        <div class="hero-actions reveal" style="--d:.55s">
+          <a class="btn btn-primary" href="#contact">無料で相談する <span class="arrow">→</span></a>
+          <a class="btn btn-ghost" href="#what">しくみを見る</a>
+        </div>
+        <p class="hero-en reveal" style="--d:.65s">No code. No guesswork. Toward you.</p>
+      </div>
+      <div class="mock reveal" style="--d:.3s" aria-label="進み具合の画面のイメージ">
+        <div class="mock-head"><span>進み具合</span><span>画面のイメージ</span></div>
+        <div class="mock-title">予約と売上を一画面にまとめる</div>
+        <ul>
+          <li><span>やりたいことの整理</span><span class="tag tag-ok">完了</span></li>
+          <li><span>予約の一覧画面</span><span class="tag tag-ok">確認済み</span></li>
+          <li><span>売上の集計</span><span class="tag tag-run">作業中</span></li>
+          <li><span>公開する</span><span class="tag tag-you">あなたの承認待ち</span></li>
+        </ul>
+        <p class="mock-note">説明のための例です。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tint" id="pain">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Your Problem</p>
+        <h2 class="h2">こんなこと、ありませんか。</h2>
+      </div>
+      <ul class="pains reveal">
+        <li>開発会社に頼むと、高いし時間もかかる</li>
+        <li>エクセルとツールが増えて、情報がバラバラ</li>
+        <li>社内にエンジニアがいない。採用もできない</li>
+        <li>AI を入れてみたけれど、結局使っていない</li>
+        <li>頼んだものが、思っていたのと違った</li>
+      </ul>
+      <p class="pains-answer reveal">必要なのは、新しい道具ではなく、<span class="grad-text">最後まで一緒に作る相手</span>です。</p>
+    </div>
+  </section>
+
+  <section class="section" id="what">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">What is ZUDIA AI</p>
+        <h2 class="h2">AI の「現場監督」と「職人」が、<br>あなたの代わりに作ります。</h2>
+        <p>家を建てるとき、施主は大工さんに細かい指示を出しません。現場監督が工事を段取りし、職人が作り、監督が仕上がりを確かめます。ZUDIA AI も同じです。あなたは「何がほしいか」を話し、大事なところを決めるだけ。段取りと確認は AI が行い、ZUDIA の担当者がそばで見守ります。</p>
+      </div>
+      <div class="crew reveal">
+        <div class="is-you"><span class="who">You</span><b>あなた</b><p>やりたいことを話す。公開やお金が動くところを決める。</p></div>
+        <div><span class="who">Supervisor</span><b>現場監督 AI</b><p>仕事を小さく分けて職人 AI に渡し、出来上がりを自分で動かして確かめる。</p></div>
+        <div><span class="who">Crew</span><b>職人 AI</b><p>分けられた仕事を、決められた範囲だけで作る。確かめた結果をつけて報告する。</p></div>
+        <div><span class="who">ZUDIA</span><b>伴走する担当者</b><p>最初の聞き取りから、公開後の振り返りまで一緒に進める。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tint" id="promise">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Three Promises</p>
+        <h2 class="h2">ZUDIA AI の 3 つの約束</h2>
+      </div>
+      <div class="promises">
+        <div class="promise reveal">
+          <span class="num">01</span>
+          <h3>大事なことは、あなたが決める</h3>
+          <dl>
+            <dt>何をするか</dt><dd>公開する、お金がかかる、データを消す、外にメールを送る。こうした操作は、あなたが画面で「承認」を押すまで進みません。押す前に、何が起きるかを 1 画面で説明します。</dd>
+            <dt>なぜ</dt><dd>知らないうちに公開や課金が進むと、安心して任せられないからです。決める場所を絞るので、それ以外は気にせず任せられます。</dd>
+          </dl>
+        </div>
+        <div class="promise reveal" style="--d:.1s">
+          <span class="num">02</span>
+          <h3>ひとりにしない</h3>
+          <dl>
+            <dt>何をするか</dt><dd>最初の「やりたいこと」を、ZUDIA の担当者が一緒に整理します。公開した後も月に 1 回、使われ方を一緒に見て、次に直すところを決めます。</dd>
+            <dt>なぜ</dt><dd>思いつきの一言をそのまま作ると、動くけれど使われないものができやすいからです。作って終わりにせず、役に立つまで付き合います。</dd>
+          </dl>
+        </div>
+        <div class="promise reveal" style="--d:.2s">
+          <span class="num">03</span>
+          <h3>「できました」を証拠で見せる</h3>
+          <dl>
+            <dt>何をするか</dt><dd>作業ごとに「何を確かめたか」「見つかった問題と、どう直したか」をそのままお見せします。</dd>
+            <dt>なぜ</dt><dd>AI が作ったものは、一度目にはどこか抜けていることがあるからです。ZUDIA の社内の開発でも、最初の仕上がりは毎回、別の AI の点検で直すところが見つかりました。それを直してからお届けします。</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="proof">
+    <div class="wrap evidence">
+      <div class="section-head reveal">
+        <p class="eyebrow">Proof</p>
+        <h2 class="h2">「本当に動くの？」に、<br>中身で答えます。</h2>
+        <p>作業が終わるたびに、右のような報告が届きます。確かめた内容、点検で見つかった問題と直した結果、あなたに見てほしいところ。専門用語は使わずに書きます。</p>
+      </div>
+      <div class="card-ev reveal" style="--d:.15s" aria-label="作業報告のイメージ">
+        <h4>作業報告：予約の一覧画面</h4>
+        <div class="row"><span>確かめたこと</span>
+          <p>予約を 100 件入れても、2 秒以内に表示される<span class="tag tag-ok">確認済み</span></p>
+          <p>ほかの店舗の予約は見えない<span class="tag tag-ok">確認済み</span></p>
+        </div>
+        <div class="row"><span>点検で見つかったこと</span>
+          <p>月末の予約が 1 日ずれて表示されていた → 直して、もう一度確かめた<span class="tag tag-ok">直した</span></p>
+        </div>
+        <div class="row"><span>あなたにお願い</span>
+          <p>画面の色と文字の大きさを見てください<span class="tag tag-you">確認待ち</span></p>
+        </div>
+        <p class="mock-note">説明のための例です。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tint" id="examples">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Examples</p>
+        <h2 class="h2">たとえば、こんなものが作れます。</h2>
+      </div>
+      <ul class="examples reveal">
+        <li><b>お客様・案件の管理</b><span>エクセルで管理していた顧客と商談を、一つの画面に</span></li>
+        <li><b>予約と売上の一画面化</b><span>店舗ごとの予約・来店・売上を毎日自動で集計</span></li>
+        <li><b>社内の申請と承認</b><span>紙やメールの申請を、スマホで出して承認できる形に</span></li>
+        <li><b>SNS 投稿の準備</b><span>商品や物件の情報から、投稿の文章と予定表を作る</span></li>
+        <li><b>問い合わせの一次対応</b><span>よくある質問への回答と、担当者への引き継ぎ</span></li>
+        <li><b>毎月のレポート</b><span>数字を集めて、見やすいレポートを自動で作る</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="flow">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">How it goes</p>
+        <h2 class="h2">進み方</h2>
+        <p>小さく作って、確かめながら広げます。最初の一つは、数週間でお渡しできる大きさから始めます。</p>
+      </div>
+      <ol class="flow reveal">
+        <li><span class="who">あなた + ZUDIA</span><b>話す</b><span>困っていること、やりたいことを聞かせてください（無料）</span></li>
+        <li><span class="who">ZUDIA</span><b>1 枚にまとめる</b><span>画面・使う人・データを、やることカード 1 枚に整理</span></li>
+        <li><span class="who">あなた</span><b>承認する</b><span>カードと見積もりを見て、始めるかを決める</span></li>
+        <li><span class="who">AI</span><b>作る</b><span>作業ごとに確かめて報告。進み具合はいつでも見られる</span></li>
+        <li><span class="who">あなた</span><b>確かめて公開</b><span>試しに触って、証拠を見て、公開を承認する</span></li>
+        <li><span class="who">あなた + ZUDIA</span><b>一緒に育てる</b><span>月 1 回、使われ方を見て次に直すところを決める</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section tint" id="plans">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">How to start</p>
+        <h2 class="h2">使い方は 2 通り</h2>
+      </div>
+      <div class="plans">
+        <div class="plan reveal">
+          <span class="status is-live badge">いま始められます</span>
+          <h3>御社の PC で使う</h3>
+          <ul>
+            <li>御社の PC に、ZUDIA が設定一式を入れます</li>
+            <li>会社のロゴと色を覚えさせ、資料も画面もいつも会社らしい見た目に</li>
+            <li>作ったものは、御社のものとして安全に保存（GitHub）</li>
+            <li>独自ドメイン（お名前.com など）での公開まで手伝います</li>
+          </ul>
+          <p class="mock-note">必要なもの: Windows の PC と、AI（Claude）の有料プランのご契約</p>
+        </div>
+        <div class="plan reveal" style="--d:.1s">
+          <span class="tag tag-run badge">準備中</span>
+          <h3>ZUDIA におまかせ</h3>
+          <ul>
+            <li>PC の準備は要りません。ブラウザだけで使えます</li>
+            <li>進み具合・報告・承認を、一つの画面で</li>
+            <li>AI の作業は ZUDIA 側の環境で行います</li>
+          </ul>
+          <p class="mock-note">ご案内できるようになりしだい、このページでお知らせします。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="price">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Price</p>
+        <h2 class="h2">料金</h2>
+        <p>作るものの大きさで変わるため、お話を伺ってからお見積りします。相談は無料です。</p>
+      </div>
+      <div class="price reveal">
+        <table>
+          <tr><th>初期費用</th><td>設定一式と、最初の一つを作って公開するまで。やることカードの大きさで、着手前に金額を決めます。</td></tr>
+          <tr><th>月額</th><td>運用、月 1 回の振り返り、小さな手直し。内容に合わせてご提案します。</td></tr>
+          <tr><th>AI の利用料</th><td>お客様ご自身の AI のご契約（Claude の有料プランなど）でお支払いいただきます。目安はご相談時にご案内します。</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tint" id="faq">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">FAQ</p>
+        <h2 class="h2">よくある質問</h2>
+      </div>
+      <div class="faq reveal">
+        <details><summary>プログラミングがまったく分かりませんが、使えますか？</summary><p>はい。話す・読む・決めるだけで進みます。報告も専門用語を使わずに書きます。分からないところは、担当者がその場で説明します。</p></details>
+        <details><summary>どんな PC が必要ですか？</summary><p>「御社の PC で使う」場合は、Windows の PC が 1 台あれば始められます。快適に使える目安は、ご相談時に今の PC を見てお伝えします。「ZUDIA におまかせ」はブラウザだけで使える形を準備中です。</p></details>
+        <details><summary>AI の利用料はいくらかかりますか？</summary><p>お客様ご自身の AI のご契約（Claude の有料プランなど）でお支払いいただきます。作るものの量で適したプランが変わるため、ご相談時に目安をお伝えします。</p></details>
+        <details><summary>作ったものは誰のものですか？</summary><p>御社のものです。作ったものは御社のアカウントに保存し、ご契約をやめた後も手元に残ります。</p></details>
+        <details><summary>会社の情報やパスワードは安全ですか？</summary><p>パスワードや鍵は御社の PC の中に置き、作業の記録や報告には書きません。保存の前には、パスワードなどが混ざっていないかを自動で調べます。公開・課金・データの削除は、必ずあなたの承認を通します。</p></details>
+        <details><summary>どのくらいの期間でできますか？</summary><p>最初の一つは、数週間でお渡しできる大きさから始めます。大きなものは、小さく分けて順番に作ります。</p></details>
+        <details><summary>まだ何を作りたいか決まっていません。</summary><p>それで大丈夫です。今の困りごとを聞かせていただき、何から作ると効くかを一緒に考えるところから始めます。</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section on-navy contact" id="contact">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="eyebrow">Contact</p>
+        <div class="section-head">
+          <h2 class="h2">まずは、困っていることを<br>話してください。</h2>
+          <p>「これ、できるのかな」という段階で構いません。話を聞くところから、一緒に始めます。</p>
+        </div>
+      </div>
+      <div class="contact-actions reveal" style="--d:.15s">
+        <a class="btn btn-primary" href="mailto:info@zudia.jp?subject=ZUDIA%20AI%E3%81%AE%E7%9B%B8%E8%AB%87">メールで相談する <span class="arrow">→</span></a>
+        <a class="btn btn-ghost" href="../">ZUDIA について</a>
+        <p class="note">info@zudia.jp</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer on-navy section">
+  <div class="wrap">
+    <div class="footer-top">
+      <a class="brand" href="../" aria-label="ZUDIA トップへ">
+        <img src="../assets/zudia-symbol.png" alt="" width="38" height="29">
+        <span>
+          <span class="brand-name">ZUDIA</span><br>
+          <span class="brand-tag">TOWARD YOU</span>
+        </span>
+      </a>
+      <p class="footer-message">Toward You</p>
+    </div>
+    <nav class="footer-nav" aria-label="フッター">
+      <a href="../">ZUDIA トップ</a>
+      <a href="../products.html">プロダクト・実績</a>
+      <a href="#what">ZUDIA AI とは</a>
+      <a href="#price">料金</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#contact">お問い合わせ</a>
+      <a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+    <div class="footer-bottom">
+      <span class="en">© <span data-year>2026</span> ZUDIA Inc.</span>
+      <span>もっと、あなたへ。</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
